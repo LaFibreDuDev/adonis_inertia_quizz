@@ -30,9 +30,14 @@ export default class PostController {
     return response.redirect().toRoute('blog.list')
   }
 
-  async editStore({ params, request, response }: HttpContext) {
+  async update({ params, request, response }: HttpContext) {
     const payload = await request.validateUsing(editPostValidator)
     await this.postRepository.edit(params.id, payload)
+    return response.redirect().toRoute('blog.list')
+  }
+
+  async destroy({ params, response }: HttpContext) {
+    await this.postRepository.delete(params.id)
     return response.redirect().toRoute('blog.list')
   }
 }

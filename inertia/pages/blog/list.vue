@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import AppDelete from '~/components/AppDelete.vue'
 import Layout from '~/components/Layout.vue'
-import { useForm } from '@inertiajs/vue3'
+
 const props = defineProps<{
   posts: Object
 }>()
@@ -20,7 +21,9 @@ const props = defineProps<{
             <p>{{ post.content }}</p>
             <div class="flex justify-between mt-4">
               <a class="btn btn-info" :href="`/edit/${post.id}`">Editer l'article</a>
-              <button class="btn btn-error">Supprimer l'article</button>
+              <AppDelete :route-path="`/destroy/${post.id}`" :id="post.id">{{
+                `Êtes vous sûr de vouloir supprimer l'article ${post.id} ?`
+              }}</AppDelete>
             </div>
           </div>
         </div>

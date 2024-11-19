@@ -17,4 +17,9 @@ export class PostRepository {
     const post = await this.findById(id)
     return await post.merge(payload).save()
   }
+
+  async delete(id: number) {
+    const post = await this.findById(id)
+    await post.delete()
+  }
 }

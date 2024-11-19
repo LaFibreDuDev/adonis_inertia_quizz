@@ -24,8 +24,14 @@ router
         match: /^[0-9]+$/,
       })
     router
-      .put('/edit/:id', [PostController, 'editStore'])
-      .as('edit_store')
+      .put('/update/:id', [PostController, 'update'])
+      .as('update')
+      .where('id', {
+        match: /^[0-9]+$/,
+      })
+    router
+      .delete('/destroy/:id', [PostController, 'destroy'])
+      .as('destroy')
       .where('id', {
         match: /^[0-9]+$/,
       })
