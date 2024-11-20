@@ -7,7 +7,7 @@ import { createPostValidator, editPostValidator } from '#validators/post'
 export default class PostController {
   constructor(private postRepository: PostRepository) {}
 
-  async list({ inertia }: HttpContext) {
+  async list({ auth, inertia }: HttpContext) {
     const posts = await this.postRepository.findAll()
     return inertia.render('blog/list', { posts: posts })
   }

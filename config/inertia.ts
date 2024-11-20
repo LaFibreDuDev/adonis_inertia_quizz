@@ -11,7 +11,9 @@ const inertiaConfig = defineConfig({
    * Data that should be shared with all rendered pages
    */
   sharedData: {
+    appName: 'Mon super site',
     errors: (ctx) => ctx.session?.flashMessages.get('errors'),
+    currentUser: (ctx) => ctx.auth?.use('web').user,
   },
 
   /**
@@ -19,8 +21,8 @@ const inertiaConfig = defineConfig({
    */
   ssr: {
     enabled: false,
-    entrypoint: 'inertia/app/ssr.ts'
-  }
+    entrypoint: 'inertia/app/ssr.ts',
+  },
 })
 
 export default inertiaConfig

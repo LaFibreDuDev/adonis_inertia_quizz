@@ -8,7 +8,7 @@ const model = defineModel()
     <label :for="name">{{ label }}</label>
     <input
       :id="name"
-      type="text"
+      type="password"
       :name="name"
       class="input input-bordered"
       required
