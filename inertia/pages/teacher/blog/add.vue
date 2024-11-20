@@ -3,16 +3,19 @@ import Layout from '~/components/Layout.vue'
 import { useForm } from '@inertiajs/vue3'
 import AppInput from '~/components/AppInput.vue'
 import AppTextarea from '~/components/AppTextarea.vue'
+import { computed } from 'vue'
+import { client } from '~/helpers/rpc_client.ts'
 
 const form = useForm({
   title: null,
   content: null,
 })
+const storeRouteUrl = computed(() => client.$url('teacher.blog.store'))
 </script>
 <template>
   <Layout>
     <h1 class="text-2xl my-8">Ajouter un nouvel article</h1>
-    <form method="post" @submit.prevent="form.post('/blog/store')">
+    <form method="post" @submit.prevent="form.post(storeRouteUrl)">
       <AppInput
         label="Titre de l'article"
         :errors="form.errors.title"

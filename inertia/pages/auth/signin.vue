@@ -12,13 +12,13 @@ const form = useForm({
   email: null,
   password: null,
 })
-const signinRouteUrl = computed(() => client.$url('auth.store'))
+const signInRouteUrl = computed(() => client.$url('auth.store'))
 </script>
 
 <template>
   <Layout>
     <h1 class="text-2xl my-8">Inscription</h1>
-    <form method="post" @submit.prevent="form.post(signinRouteUrl)">
+    <form method="post" @submit.prevent="form.post(signInRouteUrl)">
       <div class="flex flex-col gap-4">
         <AppInput
           label="Pseudo"
