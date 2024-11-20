@@ -51,6 +51,5 @@ router
   })
   .as('blog')
   .prefix('blog')
-  .use(middleware.auth())
 
 router.get('/about', [AboutController, 'index']).as('about')

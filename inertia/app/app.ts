@@ -8,6 +8,8 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { TuyauPlugin } from '@tuyau/inertia/vue'
+import { client } from '~/helpers/rpc_client'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 
@@ -29,6 +31,7 @@ createInertiaApp({
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(pinia)
+      .use(TuyauPlugin, { client: client })
       .mount(el)
   },
 })

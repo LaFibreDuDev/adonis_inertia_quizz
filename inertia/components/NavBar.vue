@@ -17,7 +17,9 @@ const currentUser = computed(() => usePage<SharedProps>().props.currentUser)
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
-          <li><Link href="/blog" :class="{ active: $page.url === '/blog' }">Accueil</Link></li>
+          <li>
+            <Link route="blog.list" :class="{ active: $page.url === '/blog' }">Accueil</Link>
+          </li>
           <li><Link href="/about" :class="{ active: $page.url === '/about' }">A propos</Link></li>
         </ul>
       </div>

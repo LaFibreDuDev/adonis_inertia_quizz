@@ -41,6 +41,15 @@ importers:
       '@inertiajs/vue3':
         specifier: ^1.2.0
         version: 1.2.0(vue@3.5.12(typescript@5.6.3))
+      '@tuyau/client':
+        specifier: ^0.1.3
+        version: 0.1.3
+      '@tuyau/core':
+        specifier: ^0.2.1
+        version: 0.2.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))
+      '@tuyau/inertia':
+        specifier: ^0.0.4
+        version: 0.0.4(@inertiajs/vue3@1.2.0(vue@3.5.12(typescript@5.6.3)))(@tuyau/client@0.1.3)(vue@3.5.12(typescript@5.6.3))
       '@vinejs/vine':
         specifier: ^2.1.0
         version: 2.1.0
@@ -1094,6 +1103,33 @@ packages:
 
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
+
+  '@tuyau/client@0.1.3':
+    resolution: {integrity: sha512-00IqAkbae7a154bpcavuJYcv1oRQW4nfSVND2jZn/ZACHPEcFVWoBmgM9Gl0wdELoHotsQSQ2eC+nDqfDvanAQ==}
+
+  '@tuyau/core@0.2.1':
+    resolution: {integrity: sha512-CUA1bfEoqVOLFEzSQ8cTHBu+Z+Sbv8CFArr0iKctuApbQ+YJVuY8sAW4J0KgjfoTFOC+wVYtU2Dcp90ZVBZj8g==}
+    engines: {node: '>=20.6.0'}
+    peerDependencies:
+      '@adonisjs/core': ^6.2.0
+
+  '@tuyau/inertia@0.0.4':
+    resolution: {integrity: sha512-LrVm0uNNYgeJReM/kF3Fli3WL4fyT0mUeJeoGsr5lg58mIBlleyTuJ/GK35/14dWYjsUt8IO7pQVvAUdWqVmQg==}
+    peerDependencies:
+      '@inertiajs/react': ^1.0.16
+      '@inertiajs/vue3': ^1.0.16
+      '@tuyau/client': 0.1.3
+      react: ^18.3.1
+      vue: ^3.4.27
+    peerDependenciesMeta:
+      '@inertiajs/react':
+        optional: true
+      '@inertiajs/vue3':
+        optional: true
+      react:
+        optional: true
+      vue:
+        optional: true
 
   '@tuyau/utils@0.0.4':
     resolution: {integrity: sha512-ex6CAJNLiTuOvx7nUrgs8FwNG/t88Mi8QTLSO3muHbB6vBSpYimZ6iSUkk4cjEFd4XDy0y+24GDgXKoBfGf4ag==}
@@ -2668,6 +2704,10 @@ packages:
   knitwork@1.1.0:
     resolution: {integrity: sha512-oHnmiBUVHz1V+URE77PNot2lv3QiYU2zQf1JjOVkMt3YDKGbu8NAFr+c4mcNOhdsGrB/VpVbRwPwhiXrPhxQbw==}
 
+  ky@1.7.2:
+    resolution: {integrity: sha512-OzIvbHKKDpi60TnF9t7UUVAF1B4mcqc02z5PIvrm08Wyb+yOcz63GRvEuVxNT18a9E1SrNouhB4W2NNLeD7Ykg==}
+    engines: {node: '>=18'}
+
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -2946,6 +2986,9 @@ packages:
   object-keys@1.1.1:
     resolution: {integrity: sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==}
     engines: {node: '>= 0.4'}
+
+  object-to-formdata@4.5.1:
+    resolution: {integrity: sha512-QiM9D0NiU5jV6J6tjE1g7b4Z2tcUnKs1OPUi4iMb2zH+7jwlcUrASghgkFk9GtzqNNq8rTQJtT8AzjBAvLoNMw==}
 
   object.assign@4.1.5:
     resolution: {integrity: sha512-byy+U7gp+FVwmyzKPYhW2h5l3crpmGsxl7X2s8y43IgxvG4g3QZ6CffDtsNQy1WsmZpQbO+ybo0AlW7TY6DcBQ==}
@@ -5032,6 +5075,24 @@ snapshots:
 
   '@tsconfig/node16@1.0.4': {}
 
+  '@tuyau/client@0.1.3':
+    dependencies:
+      '@poppinss/matchit': 3.1.2
+      ky: 1.7.2
+      object-to-formdata: 4.5.1
+
+  '@tuyau/core@0.2.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))':
+    dependencies:
+      '@adonisjs/core': 6.14.1(@adonisjs/assembler@7.8.2(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0)
+      ts-morph: 23.0.0
+
+  '@tuyau/inertia@0.0.4(@inertiajs/vue3@1.2.0(vue@3.5.12(typescript@5.6.3)))(@tuyau/client@0.1.3)(vue@3.5.12(typescript@5.6.3))':
+    dependencies:
+      '@tuyau/client': 0.1.3
+    optionalDependencies:
+      '@inertiajs/vue3': 1.2.0(vue@3.5.12(typescript@5.6.3))
+      vue: 3.5.12(typescript@5.6.3)
+
   '@tuyau/utils@0.0.4': {}
 
   '@types/bytes@3.1.4': {}
@@ -6652,6 +6713,8 @@ snapshots:
 
   knitwork@1.1.0: {}
 
+  ky@1.7.2: {}
+
   levn@0.4.1:
     dependencies:
       prelude-ls: 1.2.1
@@ -6887,6 +6950,8 @@ snapshots:
   object-inspect@1.13.3: {}
 
   object-keys@1.1.1: {}
+
+  object-to-formdata@4.5.1: {}
 
   object.assign@4.1.5:
     dependencies:
