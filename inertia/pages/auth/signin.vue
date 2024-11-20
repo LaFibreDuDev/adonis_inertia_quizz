@@ -3,6 +3,8 @@ import Layout from '~/components/Layout.vue'
 import AppInput from '~/components/AppInput.vue'
 import { useForm } from '@inertiajs/vue3'
 import AppPasswordInput from '~/components/AppPasswordInput.vue'
+import { computed } from 'vue'
+import { client } from '~/helpers/rpc_client.ts'
 const form = useForm({
   username: null,
   lastname: null,
@@ -10,12 +12,13 @@ const form = useForm({
   email: null,
   password: null,
 })
+const signinRouteUrl = computed(() => client.$url('auth.store'))
 </script>
 
 <template>
   <Layout>
     <h1 class="text-2xl my-8">Inscription</h1>
-    <form method="post" @submit.prevent="form.post('/auth/store')">
+    <form method="post" @submit.prevent="form.post(signinRouteUrl)">
       <div class="flex flex-col gap-4">
         <AppInput
           label="Pseudo"

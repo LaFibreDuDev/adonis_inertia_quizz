@@ -4,6 +4,7 @@ import { HttpContext } from '@adonisjs/core/http'
 import { UserRepository } from '#repositories/user_repository'
 import { signinValidator } from '#validators/user'
 import { inject } from '@adonisjs/core'
+import { UserRole } from '../enums/user_role.js'
 
 @inject()
 export default class AuthController {
@@ -27,11 +28,15 @@ export default class AuthController {
     const { email, password } = request.only(['email', 'password'])
     const user = await this.userRepository.verify(email, password)
     await auth.use('web').login(user)
-    return response.redirect().toRoute('blog.list')
+    if (user.role === UserRole.Teacher) {
+      return response.redirect().toRoute('teacher.blog.list')
+    } else {
+      return response.redirect().toRoute('student.home')
+    }
   }
 
-  async logout({ request, auth, response }: HttpContext) {
+  async logout({ auth, response }: HttpContext) {
     await auth.use('web').logout()
-    return response.redirect().toRoute('blog.list')
+    return response.redirect().toRoute('auth.login')
   }
 }

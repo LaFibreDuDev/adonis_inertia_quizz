@@ -13,7 +13,11 @@ const inertiaConfig = defineConfig({
   sharedData: {
     appName: 'Mon super site',
     errors: (ctx) => ctx.session?.flashMessages.get('errors'),
-    currentUser: (ctx) => ctx.auth?.use('web').user,
+    currentUser: async (ctx) => {
+      // TODO: solution temporaire
+      //await ctx.auth?.authenticate()
+      return ctx.auth?.user
+    },
   },
 
   /**

@@ -7,37 +7,37 @@ import { createPostValidator, editPostValidator } from '#validators/post'
 export default class PostController {
   constructor(private postRepository: PostRepository) {}
 
-  async list({ auth, inertia }: HttpContext) {
+  async list({ inertia }: HttpContext) {
     const posts = await this.postRepository.findAll()
-    return inertia.render('blog/list', { posts: posts })
+    return inertia.render('teacher/blog/list', { posts: posts })
   }
 
   add({ inertia }: HttpContext) {
-    return inertia.render('blog/add')
+    return inertia.render('teacher/blog/add')
   }
 
   async store({ request, response }: HttpContext) {
     const payload = await request.validateUsing(createPostValidator)
     await this.postRepository.create(payload)
-    return response.redirect().toRoute('blog.list')
+    return response.redirect().toRoute('teacher.blog.list')
   }
 
   async edit({ params, response, inertia }: HttpContext) {
     const post = await this.postRepository.findById(params.id)
     if (post) {
-      return inertia.render('blog/edit', { post: post })
+      return inertia.render('teacher/blog/edit', { post: post })
     }
-    return response.redirect().toRoute('blog.list')
+    return response.redirect().toRoute('teacher.blog.list')
   }
 
   async update({ params, request, response }: HttpContext) {
     const payload = await request.validateUsing(editPostValidator)
     await this.postRepository.edit(params.id, payload)
-    return response.redirect().toRoute('blog.list')
+    return response.redirect().toRoute('teacher.blog.list')
   }
 
   async destroy({ params, response }: HttpContext) {
     await this.postRepository.delete(params.id)
-    return response.redirect().toRoute('blog.list')
+    return response.redirect().toRoute('teacher.blog.list')
   }
 }

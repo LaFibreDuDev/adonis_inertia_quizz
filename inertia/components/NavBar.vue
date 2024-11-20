@@ -4,8 +4,9 @@ import type { SharedProps } from '@adonisjs/inertia/types'
 import BurgerIcon from './icons/BurgerIcon.vue'
 import ThemeController from './ThemeController.vue'
 import { computed } from 'vue'
+import AppLink from '~/components/AppLink.vue'
+import { UserRole } from '../../app/enums/user_role.ts'
 const currentUser = computed(() => usePage<SharedProps>().props.currentUser)
-
 </script>
 <template>
   <div class="navbar bg-base-100">
@@ -18,16 +19,30 @@ const currentUser = computed(() => usePage<SharedProps>().props.currentUser)
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
-          <li>
-            <Link route="blog.list" :class="{ active: $page.url === '/blog' }">Accueil</Link>
-          </li>
-          <li><Link href="/about" :class="{ active: $page.url === '/about' }">A propos</Link></li>
+          <template v-if="currentUser && currentUser.role === UserRole.Teacher">
+            <li>
+              <AppLink :label="`Liste des articles`" :routePath="`teacher.blog.list`" />
+            </li>
+          </template>
+          <template v-if="currentUser && currentUser.role === UserRole.Student">
+            <li>
+              <AppLink :label="`Accueil étudiant`" :routePath="`student.home`" />
+            </li>
+          </template>
         </ul>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li><Link href="/blog" :class="{ active: $page.url === '/blog' }">Accueil</Link></li>
-          <li><Link href="/about" :class="{ active: $page.url === '/about' }">A propos</Link></li>
+          <template v-if="currentUser && currentUser.role === UserRole.Teacher">
+            <li>
+              <AppLink :label="`Liste des articles`" :routePath="`teacher.blog.list`" />
+            </li>
+          </template>
+          <template v-if="currentUser && currentUser.role === UserRole.Student">
+            <li>
+              <AppLink :label="`Accueil étudiant`" :routePath="`student.home`" />
+            </li>
+          </template>
         </ul>
       </div>
     </div>
@@ -36,21 +51,15 @@ const currentUser = computed(() => usePage<SharedProps>().props.currentUser)
         <template v-if="currentUser">
           <li>{{ currentUser.username }}</li>
           <li>
-            <Link href="/auth/logout" :class="{ active: $page.url === '/auth/logout' }"
-              >Se déconnecter</Link
-            >
+            <AppLink :label="`Se déconnecter`" :routePath="`auth.logout`" />
           </li>
         </template>
         <template v-else>
           <li>
-            <Link href="/auth/signin" :class="{ active: $page.url === '/auth/signin' }"
-              >Inscription</Link
-            >
+            <AppLink :label="`Inscription`" :routePath="`auth.signin`" />
           </li>
           <li>
-            <Link href="/auth/login" :class="{ active: $page.url === '/auth/login' }"
-              >Connexion</Link
-            >
+            <AppLink :label="`Connexion`" :routePath="`auth.login`" />
           </li>
         </template>
       </ul>
