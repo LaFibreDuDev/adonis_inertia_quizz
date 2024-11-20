@@ -2,15 +2,20 @@
 import { client } from '~/helpers/rpc_client.ts'
 import { Link } from '@inertiajs/vue3'
 import { computed } from 'vue'
+import { getRelativePath } from '~/helpers/functions.ts'
 const props = defineProps<{ label: String; routePath: String; routeParams?: Object }>()
 const routeUrl = computed(() => {
-  if (props.routeParams?.length > 0) {
+  console.log(props.routeParams)
+  if (props.routeParams) {
     return client.$url(props.routePath, { params: props.routeParams })
   }
   return client.$url(props.routePath)
 })
+console.log(getRelativePath(routeUrl.value))
 </script>
 
 <template>
-  <Link :href="routeUrl" :class="{ active: routeUrl.includes($page.url) }">{{ label }}</Link>
+  <Link :href="routeUrl" :class="{ active: $page.url === getRelativePath(routeUrl) }">{{
+    label
+  }}</Link>
 </template>
