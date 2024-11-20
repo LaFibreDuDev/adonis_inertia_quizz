@@ -14,7 +14,8 @@ const loginRouteUrl = computed(() => client.$url('auth.login.process'))
 
 <template>
   <Layout>
-    <h1 class="text-2xl my-8">Se connecter</h1>
+    <h1 class="text-3xl my-8">Bienvenue sur la plateforme de Quizz</h1>
+    <h2 class="text-2xl my-4">Se connecter</h2>
     <form method="post" @submit.prevent="form.post(loginRouteUrl)">
       <div class="flex flex-col gap-4">
         <AppInput label="Email" :errors="form.errors.email" v-model="form.email" :name="`email`" />

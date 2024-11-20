@@ -20,6 +20,7 @@ const menuItems = {
 <template>
   <ul class="menu">
     <template v-if="currentUser && currentUser.role === UserRole.Teacher">
+      <li class="flex items-center font-bold"><span>Vue formateur</span></li>
       <li v-for="(item, index) in menuItems.teacher" :key="'menu-teacher-' + index">
         <template v-if="item.routeParams">
           <AppLink
@@ -34,6 +35,7 @@ const menuItems = {
       </li>
     </template>
     <template v-if="currentUser && currentUser.role === UserRole.Student">
+      <li class="flex items-center font-bold"><span>Vue étudiant</span></li>
       <li v-for="(item, index) in menuItems.student" :key="'menu-student-' + index">
         <template v-if="item.routeParams">
           <AppLink
