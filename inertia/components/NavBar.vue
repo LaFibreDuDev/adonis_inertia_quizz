@@ -5,6 +5,7 @@ import BurgerIcon from './icons/BurgerIcon.vue'
 import ThemeController from './ThemeController.vue'
 import { computed } from 'vue'
 const currentUser = computed(() => usePage<SharedProps>().props.currentUser)
+
 </script>
 <template>
   <div class="navbar bg-base-100">

@@ -1,4 +1,5 @@
 import vine from '@vinejs/vine'
+import { defineValidator } from '#validators/main'
 
 const properties = {
   username: vine.string().trim().minLength(4).maxLength(256),
@@ -8,4 +9,4 @@ const properties = {
   password: vine.string().trim().minLength(4).maxLength(256),
 }
 
-export const signinValidator = vine.compile(vine.object(properties))
+export const signinValidator = defineValidator(properties)

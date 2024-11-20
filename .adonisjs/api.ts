@@ -209,3 +209,7 @@ export const api = {
   routes,
   definition: {} as ApiDefinition,
 }
+declare module '@tuyau/inertia/types' {
+  type InertiaApi = typeof api
+  export interface Api extends InertiaApi {}
+}

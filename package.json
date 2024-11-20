@@ -1,5 +1,5 @@
 {
-  "name": "vue-inertia-project",
+  "name": "@lafibre/vue-inertia-project",
   "version": "0.0.0",
   "private": true,
   "type": "module",

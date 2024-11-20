@@ -4,5 +4,4 @@
 await client.$route('blog.add').$post({
   username: 'Yannick',
   firstname: 'Yannick',
-  ...
 })*/
