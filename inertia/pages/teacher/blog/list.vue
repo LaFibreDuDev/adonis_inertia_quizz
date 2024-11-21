@@ -3,9 +3,10 @@ import Layout from '~/components/Layout.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 import Blog_table from '~/pages/teacher/blog/blog_table.vue'
+import type { PostListQueryResult } from '#repositories/post_repository'
 
 const props = defineProps<{
-  posts: Object[]
+  posts: PostListQueryResult
 }>()
 const addRouteUrl = computed(() => client.$url('teacher.blog.add'))
 </script>

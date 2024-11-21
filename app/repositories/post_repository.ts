@@ -1,9 +1,12 @@
 import Post from '#models/post'
+import { ResultOf } from '../../types/common.js'
 
 interface PostDTO {
   title: string
   content: string
 }
+
+export type PostListQueryResult = ResultOf<PostRepository, 'findAll'>
 
 export class PostRepository {
   async findAll() {

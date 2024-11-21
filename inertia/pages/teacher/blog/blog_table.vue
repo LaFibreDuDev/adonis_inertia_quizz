@@ -3,12 +3,11 @@ import TableHeader from '~/components/table/TableHeader.vue'
 import TableLine from '~/components/table/TableLine.vue'
 import AppTable from '~/components/table/AppTable.vue'
 import AppDelete from '~/components/AppDelete.vue'
-import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
-import { Camera } from 'lucide-vue-next'
+import type { PostListQueryResult } from '#repositories/post_repository'
 
-const props = defineProps<{ posts: Object[] }>()
+const props = defineProps<{ posts: PostListQueryResult }>()
 
 const editRouteUrl = (id: number) => client.$url('teacher.blog.edit', { params: { id } })
 const destroyRouteUrl = (id: number) => client.$url('teacher.blog.destroy', { params: { id } })
