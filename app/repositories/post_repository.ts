@@ -32,7 +32,7 @@ export class PostRepository {
   async delete(id: number) {
     const post = await this.findById(id)
     if (post) {
-      await post.delete()
+      return await post.delete()
     }
     throw new Error("Le post n'a pas été trouvé !")
   }

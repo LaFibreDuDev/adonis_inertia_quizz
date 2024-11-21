@@ -12,7 +12,8 @@ const menuItems = {
   ],
   teacher: [
     { label: 'Liste des articles', routePath: `teacher.blog.list` },
-    { label: 'Modifier article 1', routePath: `teacher.blog.edit`, routeParams: { id: 1 } },
+    { label: 'Liste des quiz', routePath: `teacher.quiz.list` },
+    /*{ label: 'Modifier article 1', routePath: `teacher.blog.edit`, routeParams: { id: 1 } },*/
   ],
 }
 </script>

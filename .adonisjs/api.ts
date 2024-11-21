@@ -45,9 +45,33 @@ type TeacherBlogDestroyIdDelete = {
   request: unknown
   response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['destroy']>
 }
+type TeacherQuizGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['list']>
+}
+type TeacherQuizAddGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['add']>
+}
+type TeacherQuizStorePost = {
+  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/quiz.ts')['createQuizValidator']>>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['store']>
+}
+type TeacherQuizEditIdGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['edit']>
+}
+type TeacherQuizUpdateIdPut = {
+  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/quiz.ts')['editQuizValidator']>>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['update']>
+}
+type TeacherQuizDestroyIdDelete = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['destroy']>
+}
 type StudentGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['home']>
+  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['studentHome']>
 }
 type StudentAboutGetHead = {
   request: unknown
@@ -117,6 +141,45 @@ export interface ApiDefinition {
           '$url': {
           };
           '$delete': TeacherBlogDestroyIdDelete;
+        };
+      };
+    };
+    'quiz': {
+      '$url': {
+      };
+      '$get': TeacherQuizGetHead;
+      '$head': TeacherQuizGetHead;
+      'add': {
+        '$url': {
+        };
+        '$get': TeacherQuizAddGetHead;
+        '$head': TeacherQuizAddGetHead;
+      };
+      'store': {
+        '$url': {
+        };
+        '$post': TeacherQuizStorePost;
+      };
+      'edit': {
+        ':id': {
+          '$url': {
+          };
+          '$get': TeacherQuizEditIdGetHead;
+          '$head': TeacherQuizEditIdGetHead;
+        };
+      };
+      'update': {
+        ':id': {
+          '$url': {
+          };
+          '$put': TeacherQuizUpdateIdPut;
+        };
+      };
+      'destroy': {
+        ':id': {
+          '$url': {
+          };
+          '$delete': TeacherQuizDestroyIdDelete;
         };
       };
     };
@@ -214,6 +277,48 @@ const routes = [
   },
   {
     params: [],
+    name: 'teacher.quiz.list',
+    path: '/teacher/quiz',
+    method: ["GET","HEAD"],
+    types: {} as TeacherQuizGetHead,
+  },
+  {
+    params: [],
+    name: 'teacher.quiz.add',
+    path: '/teacher/quiz/add',
+    method: ["GET","HEAD"],
+    types: {} as TeacherQuizAddGetHead,
+  },
+  {
+    params: [],
+    name: 'teacher.quiz.store',
+    path: '/teacher/quiz/store',
+    method: ["POST"],
+    types: {} as TeacherQuizStorePost,
+  },
+  {
+    params: ["id"],
+    name: 'teacher.quiz.edit',
+    path: '/teacher/quiz/edit/:id',
+    method: ["GET","HEAD"],
+    types: {} as TeacherQuizEditIdGetHead,
+  },
+  {
+    params: ["id"],
+    name: 'teacher.quiz.update',
+    path: '/teacher/quiz/update/:id',
+    method: ["PUT"],
+    types: {} as TeacherQuizUpdateIdPut,
+  },
+  {
+    params: ["id"],
+    name: 'teacher.quiz.destroy',
+    path: '/teacher/quiz/destroy/:id',
+    method: ["DELETE"],
+    types: {} as TeacherQuizDestroyIdDelete,
+  },
+  {
+    params: [],
     name: 'student.home',
     path: '/student',
     method: ["GET","HEAD"],
@@ -225,6 +330,13 @@ const routes = [
     path: '/student/about',
     method: ["GET","HEAD"],
     types: {} as StudentAboutGetHead,
+  },
+  {
+    params: [],
+    name: 'home',
+    path: '/',
+    method: ["GET","HEAD"],
+    types: {} as unknown,
   },
 ] as const;
 export const api = {

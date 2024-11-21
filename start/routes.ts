@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
 const PostController = () => import('#controllers/post_controller')
+const QuizController = () => import('#controllers/quiz_controller')
 const PageController = () => import('#controllers/page_controller')
 const AuthController = () => import('#controllers/auth_controller')
 
@@ -53,6 +54,33 @@ router
       })
       .as('blog')
       .prefix('blog')
+
+    router
+      .group(() => {
+        router.get('/', [QuizController, 'list']).as('list')
+        router.get('/add', [QuizController, 'add']).as('add')
+        router.post('/store', [QuizController, 'store']).as('store')
+        router
+          .get('/edit/:id', [QuizController, 'edit'])
+          .as('edit')
+          .where('id', {
+            match: /^[0-9]+$/,
+          })
+        router
+          .put('/update/:id', [QuizController, 'update'])
+          .as('update')
+          .where('id', {
+            match: /^[0-9]+$/,
+          })
+        router
+          .delete('/destroy/:id', [QuizController, 'destroy'])
+          .as('destroy')
+          .where('id', {
+            match: /^[0-9]+$/,
+          })
+      })
+      .as('quiz')
+      .prefix('quiz')
   })
   .as('teacher')
   .prefix('teacher')
