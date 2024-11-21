@@ -1,7 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import type { NextFn } from '@adonisjs/core/types/http'
 import type { Authenticators } from '@adonisjs/auth/types'
-import { UserRole } from '../enums/user_role.js'
 
 /**
  * Guest middleware is used to deny access to routes that should

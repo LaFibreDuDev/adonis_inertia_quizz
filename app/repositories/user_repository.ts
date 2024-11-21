@@ -1,7 +1,15 @@
 import User from '#models/user'
 
+interface CreateUserDTO {
+  username: string
+  lastname: string
+  firstname: string
+  email: string
+  password: string
+}
+
 export class UserRepository {
-  async create(payload) {
+  async create(payload: CreateUserDTO) {
     return await User.create(payload)
   }
 

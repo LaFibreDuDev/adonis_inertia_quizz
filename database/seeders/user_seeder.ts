@@ -1,5 +1,4 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
-import { faker } from '@faker-js/faker'
 import User from '#models/user'
 import { UserRole } from '../../app/enums/user_role.js'
 

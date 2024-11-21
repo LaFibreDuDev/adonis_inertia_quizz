@@ -1,11 +1,16 @@
 import Post from '#models/post'
 
+interface PostDTO {
+  title: string
+  content: string
+}
+
 export class PostRepository {
   async findAll() {
     return await Post.all()
   }
 
-  async create(payload) {
+  async create(payload: PostDTO) {
     return await Post.create(payload)
   }
 
@@ -13,13 +18,19 @@ export class PostRepository {
     return await Post.find(id)
   }
 
-  async edit(id: number, payload) {
+  async edit(id: number, payload: PostDTO) {
     const post = await this.findById(id)
-    return await post.merge(payload).save()
+    if (post) {
+      return await post.merge(payload).save()
+    }
+    throw new Error("Le post n'a pas été trouvé !")
   }
 
   async delete(id: number) {
     const post = await this.findById(id)
-    await post.delete()
+    if (post) {
+      await post.delete()
+    }
+    throw new Error("Le post n'a pas été trouvé !")
   }
 }
