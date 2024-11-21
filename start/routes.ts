@@ -60,9 +60,11 @@ router
 
 router
   .group(() => {
-    router.get('/', [PageController, 'home']).as('home')
+    router.get('/', [PageController, 'studentHome']).as('home')
     router.get('/about', [PageController, 'about']).as('about')
   })
   .as('student')
   .prefix('student')
   .use(middleware.auth())
+
+router.get('/', [PageController, 'home']).as('home')
