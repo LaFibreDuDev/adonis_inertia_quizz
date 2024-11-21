@@ -5,8 +5,11 @@ import { router } from '@inertiajs/vue3'
 type Props = {
   routePath: String
   id: Number
+  message?: String
 }
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  message: 'Êtes-vous sûr de vouloir supprimer ?',
+})
 const open = ref(false)
 
 const toggleDisplay = () => {
@@ -20,14 +23,16 @@ const deleteItem = async () => {
 </script>
 
 <template>
-  <button class="btn btn-error" @click="toggleDisplay">Supprimer</button>
+  <button @click="toggleDisplay">
+    <slot>Supprimer</slot>
+  </button>
   <template v-if="open">
     <Teleport to="body">
       <div class="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-50">
         <dialog class="modal" open>
           <div class="modal-box">
             <h3 class="text-lg font-bold">Confirmation</h3>
-            <p class="py-4"><slot>Êtes-vous sûr de vouloir supprimer ?</slot></p>
+            <p class="py-4">{{ message }}</p>
             <div class="modal-action">
               <button class="btn btn-error" @click="deleteItem">Oui</button>
               <button class="btn btn-outline" @click="toggleDisplay">Non</button>
