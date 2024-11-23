@@ -49,6 +49,10 @@ type TeacherQuizGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['list']>
 }
+type TeacherQuizShowIdGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['show']>
+}
 type TeacherQuizAddGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['add']>
@@ -149,6 +153,14 @@ export interface ApiDefinition {
       };
       '$get': TeacherQuizGetHead;
       '$head': TeacherQuizGetHead;
+      'show': {
+        ':id': {
+          '$url': {
+          };
+          '$get': TeacherQuizShowIdGetHead;
+          '$head': TeacherQuizShowIdGetHead;
+        };
+      };
       'add': {
         '$url': {
         };
@@ -281,6 +293,13 @@ const routes = [
     path: '/teacher/quiz',
     method: ["GET","HEAD"],
     types: {} as TeacherQuizGetHead,
+  },
+  {
+    params: ["id"],
+    name: 'teacher.quiz.show',
+    path: '/teacher/quiz/show/:id',
+    method: ["GET","HEAD"],
+    types: {} as TeacherQuizShowIdGetHead,
   },
   {
     params: [],

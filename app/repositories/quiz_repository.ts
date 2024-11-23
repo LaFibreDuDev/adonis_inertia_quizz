@@ -16,8 +16,16 @@ export class QuizRepository {
     return await Quiz.create(payload)
   }
 
-  async findById(id: number) {
-    return await Quiz.find(id)
+  async findById(id: number, withQuestions: boolean = false) {
+    const quiz = Quiz.query().where('id', id).preload('creator')
+    if (withQuestions) {
+      return await quiz
+        .preload('questions', (questionsQuery) => {
+          questionsQuery.preload('responses')
+        })
+        .firstOrFail()
+    }
+    return await quiz.firstOrFail()
   }
 
   async edit(id: number, payload: QuizDTO) {

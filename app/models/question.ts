@@ -9,20 +9,29 @@ import {
 } from '@adonisjs/lucid/orm'
 import User from '#models/user'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import Quiz from '#models/quiz'
+import Response from '#models/response'
 import { getCurrentUserId } from '#models/utils/get_current_user'
-import Question from '#models/question'
 
-export default class Quiz extends BaseModel {
+export default class Question extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
   declare title: string
 
-  @hasMany(() => Question, {
+  @hasMany(() => Response, {
+    foreignKey: 'questionId',
+  })
+  declare responses: HasMany<typeof Response>
+
+  @column()
+  declare quizId: number
+
+  @belongsTo(() => Quiz, {
     foreignKey: 'quizId',
   })
-  declare questions: HasMany<typeof Question>
+  declare quiz: BelongsTo<typeof Quiz>
 
   @column()
   declare createdBy: number
@@ -47,13 +56,13 @@ export default class Quiz extends BaseModel {
   declare updatedAt: DateTime
 
   @beforeCreate()
-  public static async setCreatedBy(quiz: Quiz) {
+  public static async setCreatedBy(question: Question) {
     this.createdBy = await getCurrentUserId()
     this.updatedBy = this.createdBy
   }
 
   @beforeUpdate()
-  public static async setUpdatedBy(quiz: Quiz) {
+  public static async setUpdatedBy(question: Question) {
     this.updatedBy = await getCurrentUserId()
   }
 }

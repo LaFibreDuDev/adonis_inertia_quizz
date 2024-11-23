@@ -3,14 +3,11 @@ import TableHeader from '~/components/table/TableHeader.vue'
 import TableLine from '~/components/table/TableLine.vue'
 import AppTable from '~/components/table/AppTable.vue'
 import AppDelete from '~/components/AppDelete.vue'
-import { client } from '~/helpers/rpc_client.ts'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
 import type { PostListQueryResult } from '#repositories/post_repository'
+import { Link } from '@tuyau/inertia/vue'
 
 const props = defineProps<{ posts: PostListQueryResult }>()
-
-const editRouteUrl = (id: number) => client.$url('teacher.blog.edit', { params: { id } })
-const destroyRouteUrl = (id: number) => client.$url('teacher.blog.destroy', { params: { id } })
 </script>
 
 <template>
@@ -22,11 +19,13 @@ const destroyRouteUrl = (id: number) => client.$url('teacher.blog.destroy', { pa
         <td>{{ post.title }}</td>
         <td>{{ post.content }}</td>
         <th class="flex gap-4">
-          <a :href="editRouteUrl(post.id)"><LucideIcon name="Pencil" /></a>
+          <Link route="teacher.blog.edit" :params="{ id: post.id }"
+            ><LucideIcon name="Pencil"
+          /></Link>
           <AppDelete
-            :route-path="destroyRouteUrl(post.id)"
+            :route-path="`teacher.blog.destroy`"
             :id="post.id"
-            :message="`Êtes vous sûr de vouloir supprimer l'article ${post.id} ?`"
+            :message="`Êtes vous sûr de vouloir supprimer le post ${post.id} ?`"
             ><LucideIcon name="Trash"
           /></AppDelete>
         </th>

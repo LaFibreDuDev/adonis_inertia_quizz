@@ -19,10 +19,7 @@ router
   .group(() => {
     router.get('/signin', [AuthController, 'signin']).as('signin')
     router.post('/store', [AuthController, 'store']).as('store')
-    router
-      .get('/login', [AuthController, 'login'])
-      .as('login')
-      .use([middleware.silent(), middleware.guest()])
+    router.get('/login', [AuthController, 'login']).as('login')
     router.post('/login', [AuthController, 'processLogin']).as('login.process')
     router.get('/logout', [AuthController, 'logout']).as('logout').use(middleware.auth())
   })
@@ -61,6 +58,12 @@ router
     router
       .group(() => {
         router.get('/', [QuizController, 'list']).as('list')
+        router
+          .get('/show/:id', [QuizController, 'show'])
+          .as('show')
+          .where('id', {
+            match: /^[0-9]+$/,
+          })
         router.get('/add', [QuizController, 'add']).as('add')
         router.post('/store', [QuizController, 'store']).as('store')
         router

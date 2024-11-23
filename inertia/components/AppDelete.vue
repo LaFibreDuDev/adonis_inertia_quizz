@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { router } from '@inertiajs/vue3'
+import { client } from '~/helpers/rpc_client.ts'
 
 type Props = {
   routePath: String
@@ -17,7 +18,8 @@ const toggleDisplay = () => {
 }
 
 const deleteItem = async () => {
-  await router.delete(props.routePath)
+  const route = computed(() => client.$url(props.routePath, { params: { id: props.id } }))
+  await router.delete(route.value)
   toggleDisplay()
 }
 </script>

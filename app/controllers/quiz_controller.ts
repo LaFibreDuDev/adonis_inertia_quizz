@@ -13,6 +13,11 @@ export default class QuizController {
     return inertia.render('teacher/quiz/list', { quizzes: quizzes })
   }
 
+  async show({ params, inertia }: HttpContext) {
+    const quiz = await this.quizRepository.findById(params.id, true)
+    return inertia.render('teacher/quiz/show', { quiz })
+  }
+
   add({ inertia }: HttpContext) {
     return inertia.render('teacher/quiz/add')
   }
