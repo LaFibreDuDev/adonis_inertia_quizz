@@ -55,7 +55,7 @@ const addResponse = () => {
         <label class="cursor-pointer label justify-start gap-4">
           <div class="flex flex-col gap-2 items-center justify-center">
             <input type="checkbox" class="checkbox" v-model="form.responses[index].correct" />
-            <button class="btn btn-sm btn-primary" @click="deleteResponse(index)">
+            <button class="btn btn-sm btn-error" @click="deleteResponse(index)">
               <LucideIcon name="Trash2" />
             </button>
           </div>
@@ -69,7 +69,7 @@ const addResponse = () => {
         </label>
       </template>
       <div class="my-4">
-        <button class="btn btn-primary flex gap-4" @click.prevent="addResponse()">
+        <button class="btn btn-success flex gap-4" @click.prevent="addResponse()">
           <LucideIcon name="SquarePlus" />
           <span>Ajouter une nouvelle réponse à la liste</span>
         </button>

@@ -5,11 +5,13 @@ import { client } from '~/helpers/rpc_client.ts'
 
 type Props = {
   routePath: String
-  id: Number
+  routeParams: Object
   message?: String
+  btnClasses?: Object
 }
 const props = withDefaults(defineProps<Props>(), {
   message: 'Êtes-vous sûr de vouloir supprimer ?',
+  btnClasses: {},
 })
 const open = ref(false)
 
@@ -18,14 +20,15 @@ const toggleDisplay = () => {
 }
 
 const deleteItem = async () => {
-  const route = computed(() => client.$url(props.routePath, { params: { id: props.id } }))
+  console.log(props.routeParams)
+  const route = computed(() => client.$url(props.routePath, { params: props.routeParams }))
   await router.delete(route.value)
   toggleDisplay()
 }
 </script>
 
 <template>
-  <button @click="toggleDisplay">
+  <button @click="toggleDisplay" :class="btnClasses">
     <slot>Supprimer</slot>
   </button>
   <template v-if="open">

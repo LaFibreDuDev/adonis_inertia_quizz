@@ -2,6 +2,8 @@
 import Layout from '~/components/Layout.vue'
 import AppCheckbox from '~/components/AppCheckbox.vue'
 import { Link } from '@tuyau/inertia/vue'
+import LucideIcon from '~/components/icons/LucideIcon.vue'
+import AppDelete from '~/components/AppDelete.vue'
 const props = defineProps<{ quiz: Object }>()
 </script>
 <template>
@@ -14,9 +16,18 @@ const props = defineProps<{ quiz: Object }>()
     <div class="flex flex-col gap-4" v-for="question in quiz.questions">
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
-          <h2 class="card-title mb-4">
-            {{ question.title }}
-          </h2>
+          <div class="flex justify-between">
+            <h2 class="card-title mb-4">
+              {{ question.title }}
+            </h2>
+            <AppDelete
+              :route-path="`teacher.question.destroy`"
+              :route-params="{ quizid: quiz.id, id: question.id }"
+              :message="`Êtes vous sûr de vouloir supprimer la question ${question.id} du quiz ${quiz.id} ?`"
+              btn-classes="btn btn-error"
+              ><LucideIcon name="Trash2"
+            /></AppDelete>
+          </div>
           <div class="flex flex-wrap">
             <div class="w-1/2 p-4" v-for="response in question.responses">
               <label class="cursor-pointer label">

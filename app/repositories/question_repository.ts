@@ -10,7 +10,10 @@ export class QuestionRepository {
     return await Question.create(payload)
   }
 
-  async findById(id: number) {
+  async findById(id: number, withQuiz: boolean = false) {
+    if (withQuiz) {
+      return Question.query().preload('quiz').where('id', id).firstOrFail()
+    }
     return await Question.find(id)
   }
 

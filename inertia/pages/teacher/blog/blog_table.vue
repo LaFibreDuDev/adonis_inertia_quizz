@@ -24,7 +24,7 @@ const props = defineProps<{ posts: PostListQueryResult }>()
           /></Link>
           <AppDelete
             :route-path="`teacher.blog.destroy`"
-            :id="post.id"
+            :route-params="{ id: post.id }"
             :message="`Êtes vous sûr de vouloir supprimer le post ${post.id} ?`"
             ><LucideIcon name="Trash"
           /></AppDelete>

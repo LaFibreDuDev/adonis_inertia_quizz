@@ -93,6 +93,15 @@ router
       .group(() => {
         router.get('/quiz/:id/add', [QuestionController, 'add']).as('add')
         router.post('/store', [QuestionController, 'store']).as('store')
+        router
+          .delete('/quiz/:quizid/destroy/:id', [QuestionController, 'destroy'])
+          .as('destroy')
+          .where('quizid', {
+            match: /^[0-9]+$/,
+          })
+          .where('id', {
+            match: /^[0-9]+$/,
+          })
       })
       .as('question')
       .prefix('question')

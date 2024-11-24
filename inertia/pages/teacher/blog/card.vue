@@ -20,7 +20,7 @@ const destroyRouteUrl = computed(() =>
       <p>{{ post.content }}</p>
       <div class="flex justify-between mt-4">
         <a class="btn btn-info" :href="editRouteUrl">Editer l'article</a>
-        <AppDelete :route-path="destroyRouteUrl" :id="post.id">{{
+        <AppDelete :route-path="destroyRouteUrl" :route-params="{ id: post.id }">{{
           `Êtes vous sûr de vouloir supprimer l'article ${post.id} ?`
         }}</AppDelete>
       </div>

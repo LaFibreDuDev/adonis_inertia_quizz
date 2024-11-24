@@ -20,7 +20,6 @@ export default class QuestionController {
 
   async store({ request, response }: HttpContext) {
     const payload = await request.validateUsing(createQuestionValidator)
-    console.log(payload)
     const question = await this.questionRepository.create({
       title: payload.title,
       quizId: payload.quizId,
@@ -37,6 +36,16 @@ export default class QuestionController {
     await Promise.all(promises)
     return response.redirect().toRoute('teacher.quiz.show', {
       id: payload.quizId,
+    })
+  }
+
+  async destroy({ params, response }: HttpContext) {
+    const question = await this.questionRepository.findById(params.id)
+    console.log(question)
+    const quizId = question.quizId
+    await this.questionRepository.delete(params.id)
+    return response.redirect().toRoute('teacher.quiz.show', {
+      id: quizId,
     })
   }
 }

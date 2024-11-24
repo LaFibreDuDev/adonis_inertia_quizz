@@ -81,6 +81,10 @@ type TeacherQuestionStorePost = {
   request: MakeTuyauRequest<InferInput<typeof import('../app/validators/question.ts')['createQuestionValidator']>>
   response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['store']>
 }
+type TeacherQuestionQuizIdDestroyIdDelete = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['destroy']>
+}
 type StudentGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['studentHome']>
@@ -211,6 +215,15 @@ export interface ApiDefinition {
             };
             '$get': TeacherQuestionQuizIdAddGetHead;
             '$head': TeacherQuestionQuizIdAddGetHead;
+          };
+        };
+        ':quizid': {
+          'destroy': {
+            ':id': {
+              '$url': {
+              };
+              '$delete': TeacherQuestionQuizIdDestroyIdDelete;
+            };
           };
         };
       };
@@ -374,6 +387,13 @@ const routes = [
     path: '/teacher/question/store',
     method: ["POST"],
     types: {} as TeacherQuestionStorePost,
+  },
+  {
+    params: ["quizid","id"],
+    name: 'teacher.question.destroy',
+    path: '/teacher/question/quiz/:quizid/destroy/:id',
+    method: ["DELETE"],
+    types: {} as TeacherQuestionQuizIdDestroyIdDelete,
   },
   {
     params: [],
