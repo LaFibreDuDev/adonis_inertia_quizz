@@ -1,11 +1,12 @@
-import Question from '#models/post'
+import Question from '#models/question'
 
 interface QuestionDTO {
   title: string
+  quizId: number
 }
 
 export class QuestionRepository {
-  async create(payload: QuestionDTO) {
+  async create(payload: QuestionDTO): Promise<Question> {
     return await Question.create(payload)
   }
 

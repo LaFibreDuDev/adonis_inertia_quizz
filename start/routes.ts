@@ -12,6 +12,7 @@ import { middleware } from '#start/kernel'
 
 const PostController = () => import('#controllers/post_controller')
 const QuizController = () => import('#controllers/quiz_controller')
+const QuestionController = () => import('#controllers/question_controller')
 const PageController = () => import('#controllers/page_controller')
 const AuthController = () => import('#controllers/auth_controller')
 
@@ -87,6 +88,14 @@ router
       })
       .as('quiz')
       .prefix('quiz')
+
+    router
+      .group(() => {
+        router.get('/quiz/:id/add', [QuestionController, 'add']).as('add')
+        router.post('/store', [QuestionController, 'store']).as('store')
+      })
+      .as('question')
+      .prefix('question')
   })
   .as('teacher')
   .prefix('teacher')

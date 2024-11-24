@@ -1,7 +1,9 @@
-import Response from '#models/post'
+import Response from '#models/response'
 
 interface ResponseDTO {
+  questionId: number
   title: string
+  correct: boolean
 }
 
 export class ResponseRepository {

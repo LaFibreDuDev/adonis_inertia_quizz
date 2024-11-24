@@ -57,12 +57,12 @@ export default class Question extends BaseModel {
 
   @beforeCreate()
   public static async setCreatedBy(question: Question) {
-    this.createdBy = await getCurrentUserId()
-    this.updatedBy = this.createdBy
+    question.createdBy = await getCurrentUserId()
+    question.updatedBy = question.createdBy
   }
 
   @beforeUpdate()
   public static async setUpdatedBy(question: Question) {
-    this.updatedBy = await getCurrentUserId()
+    question.updatedBy = await getCurrentUserId()
   }
 }

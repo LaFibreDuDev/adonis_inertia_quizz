@@ -19,9 +19,9 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <label class="cursor-pointer label">
-    <input type="checkbox" :class="classes" disabled checked />
-    {{ label }}
+  <label class="cursor-pointer label flex gap-4">
+    <input type="checkbox" :class="classes" :disabled="disabled" :checked="checked" />
+    <span>{{ label }}</span>
   </label>
 </template>
 

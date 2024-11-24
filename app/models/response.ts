@@ -48,12 +48,12 @@ export default class Response extends BaseModel {
 
   @beforeCreate()
   public static async setCreatedBy(response: Response) {
-    this.createdBy = await getCurrentUserId()
-    this.updatedBy = this.createdBy
+    response.createdBy = await getCurrentUserId()
+    response.updatedBy = response.createdBy
   }
 
   @beforeUpdate()
   public static async setUpdatedBy(response: Response) {
-    this.updatedBy = await getCurrentUserId()
+    response.updatedBy = await getCurrentUserId()
   }
 }

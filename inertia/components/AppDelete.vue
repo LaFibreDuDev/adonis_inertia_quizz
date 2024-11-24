@@ -29,7 +29,7 @@ const deleteItem = async () => {
     <slot>Supprimer</slot>
   </button>
   <template v-if="open">
-    <Teleport to="body">
+    <Teleport to="div#app > div">
       <div class="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-50">
         <dialog class="modal" open>
           <div class="modal-box">
