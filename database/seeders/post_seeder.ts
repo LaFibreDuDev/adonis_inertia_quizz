@@ -5,6 +5,7 @@ import { faker } from '@faker-js/faker'
 export default class extends BaseSeeder {
   async run() {
     // Write your database queries inside the run method
+    // TODO: revoir cette partie
     await Post.truncate()
     await Post.createMany(
       Array.from({ length: 10 }).map(() => ({

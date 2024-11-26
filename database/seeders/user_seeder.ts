@@ -5,6 +5,7 @@ import { UserRole } from '../../app/enums/user_role.js'
 export default class extends BaseSeeder {
   async run() {
     // Write your database queries inside the run method
+    // TODO: revoir cette partie
     await User.truncate()
     await User.create({
       username: 'JohnDoe',
