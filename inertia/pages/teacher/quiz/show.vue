@@ -2,9 +2,10 @@
 import Layout from '~/components/Layout.vue'
 import AppCheckbox from '~/components/AppCheckbox.vue'
 import { Link } from '@tuyau/inertia/vue'
-import LucideIcon from '~/components/icons/LucideIcon.vue'
 import AppDelete from '~/components/AppDelete.vue'
-const props = defineProps<{ quiz: Object }>()
+import { QuizFindQueryResult } from '#repositories/quiz_repository'
+import LucideIcon from '~/components/icons/LucideIcon.vue'
+defineProps<{ quiz: QuizFindQueryResult }>()
 </script>
 <template>
   <Layout>
@@ -20,13 +21,21 @@ const props = defineProps<{ quiz: Object }>()
             <h2 class="card-title mb-4">
               {{ question.title }}
             </h2>
-            <AppDelete
-              :route-path="`teacher.question.destroy`"
-              :route-params="{ quizid: quiz.id, id: question.id }"
-              :message="`Êtes vous sûr de vouloir supprimer la question ${question.id} du quiz ${quiz.id} ?`"
-              btn-classes="btn btn-error"
-              ><LucideIcon name="Trash2"
-            /></AppDelete>
+            <div class="flex gap-4">
+              <Link
+                route="teacher.question.edit"
+                :params="{ id: question.id }"
+                class="btn btn-primary"
+                ><LucideIcon name="Pencil"
+              /></Link>
+              <AppDelete
+                :route-path="`teacher.question.destroy`"
+                :route-params="{ quizid: quiz.id, id: question.id }"
+                :message="`Êtes vous sûr de vouloir supprimer la question ${question.id} du quiz ${quiz.id} ?`"
+                btn-classes="btn btn-error"
+                ><LucideIcon name="Trash2"
+              /></AppDelete>
+            </div>
           </div>
           <div class="flex flex-wrap">
             <div class="w-1/2 p-4" v-for="response in question.responses">

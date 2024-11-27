@@ -1,6 +1,5 @@
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
-import { createPostValidator, editPostValidator } from '#validators/post'
 import { QuizRepository } from '#repositories/quiz_repository'
 import { createQuizValidator, editQuizValidator } from '#validators/quiz'
 

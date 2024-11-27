@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const props = defineProps<{ label: String; name: String; errors?: String }>()
+defineProps<{ label?: string; name: string; errors?: string }>()
 const model = defineModel()
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <label :for="name">{{ label }}</label>
+    <label v-if="label" :for="name">{{ label }}</label>
     <input
       :id="name"
       type="text"

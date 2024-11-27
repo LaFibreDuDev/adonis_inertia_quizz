@@ -2,7 +2,7 @@ import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
 import { QuestionRepository } from '#repositories/question_repository'
 import { QuizRepository } from '#repositories/quiz_repository'
-import { createQuestionValidator } from '#validators/question'
+import { createQuestionValidator, editQuestionValidator } from '#validators/question'
 import { ResponseRepository } from '#repositories/response_repository'
 
 @inject()
@@ -24,14 +24,13 @@ export default class QuestionController {
       title: payload.title,
       quizId: payload.quizId,
     })
-    const promises: Promise[] = []
+    const promises = []
     for (const responsePayload of payload.responses) {
-      promises.push(
-        this.responseRepository.create({
-          ...responsePayload,
-          questionId: question.id,
-        })
-      )
+      const promise = this.responseRepository.create({
+        ...responsePayload,
+        questionId: question.id,
+      })
+      promises.push(promise)
     }
     await Promise.all(promises)
     return response.redirect().toRoute('teacher.quiz.show', {
@@ -39,9 +38,20 @@ export default class QuestionController {
     })
   }
 
+  async edit({ params, inertia }: HttpContext) {
+    const question = await this.questionRepository.findById(params.id, true, true)
+    return inertia.render('teacher/question/edit', { question })
+  }
+
+  async update({ request }: HttpContext) {
+    const payload = await request.validateUsing(editQuestionValidator)
+    console.log(payload)
+    //await this.quizRepository.edit(params.id, payload)
+    //return response.redirect().toRoute('teacher.quiz.list')
+  }
+
   async destroy({ params, response }: HttpContext) {
     const question = await this.questionRepository.findById(params.id)
-    console.log(question)
     const quizId = question.quizId
     await this.questionRepository.delete(params.id)
     return response.redirect().toRoute('teacher.quiz.show', {

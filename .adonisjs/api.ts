@@ -3,95 +3,103 @@ import type { InferInput } from '@vinejs/vine/types'
 
 type AuthSigninGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['signin']>
+  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['signin'], false>
 }
 type AuthStorePost = {
   request: MakeTuyauRequest<InferInput<typeof import('../app/validators/user.ts')['signinValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['store']>
+  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['store'], true>
 }
 type AuthLoginGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['login']>
+  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['login'], false>
 }
 type AuthLoginPost = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['processLogin']>
+  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['processLogin'], false>
 }
 type AuthLogoutGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['logout']>
+  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['logout'], false>
 }
 type TeacherBlogGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['list']>
+  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['list'], false>
 }
 type TeacherBlogAddGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['add']>
+  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['add'], false>
 }
 type TeacherBlogStorePost = {
   request: MakeTuyauRequest<InferInput<typeof import('../app/validators/post.ts')['createPostValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['store']>
+  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['store'], true>
 }
 type TeacherBlogEditIdGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['edit']>
+  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['edit'], false>
 }
 type TeacherBlogUpdateIdPut = {
   request: MakeTuyauRequest<InferInput<typeof import('../app/validators/post.ts')['editPostValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['update']>
+  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['update'], true>
 }
 type TeacherBlogDestroyIdDelete = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['destroy']>
+  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['destroy'], false>
 }
 type TeacherQuizGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['list']>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['list'], false>
 }
 type TeacherQuizShowIdGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['show']>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['show'], false>
 }
 type TeacherQuizAddGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['add']>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['add'], false>
 }
 type TeacherQuizStorePost = {
   request: MakeTuyauRequest<InferInput<typeof import('../app/validators/quiz.ts')['createQuizValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['store']>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['store'], true>
 }
 type TeacherQuizEditIdGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['edit']>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['edit'], false>
 }
 type TeacherQuizUpdateIdPut = {
   request: MakeTuyauRequest<InferInput<typeof import('../app/validators/quiz.ts')['editQuizValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['update']>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['update'], true>
 }
 type TeacherQuizDestroyIdDelete = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['destroy']>
+  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['destroy'], false>
 }
 type TeacherQuestionQuizIdAddGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['add']>
+  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['add'], false>
 }
 type TeacherQuestionStorePost = {
   request: MakeTuyauRequest<InferInput<typeof import('../app/validators/question.ts')['createQuestionValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['store']>
+  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['store'], true>
+}
+type TeacherQuestionQuizIdEditGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['edit'], false>
+}
+type TeacherQuestionUpdateIdPut = {
+  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/question.ts')['editQuestionValidator']>>
+  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['update'], true>
 }
 type TeacherQuestionQuizIdDestroyIdDelete = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['destroy']>
+  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['destroy'], false>
 }
 type StudentGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['studentHome']>
+  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['studentHome'], false>
 }
 type StudentAboutGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['about']>
+  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['about'], false>
 }
 export interface ApiDefinition {
   'auth': {
@@ -216,6 +224,12 @@ export interface ApiDefinition {
             '$get': TeacherQuestionQuizIdAddGetHead;
             '$head': TeacherQuestionQuizIdAddGetHead;
           };
+          'edit': {
+            '$url': {
+            };
+            '$get': TeacherQuestionQuizIdEditGetHead;
+            '$head': TeacherQuestionQuizIdEditGetHead;
+          };
         };
         ':quizid': {
           'destroy': {
@@ -231,6 +245,13 @@ export interface ApiDefinition {
         '$url': {
         };
         '$post': TeacherQuestionStorePost;
+      };
+      'update': {
+        ':id': {
+          '$url': {
+          };
+          '$put': TeacherQuestionUpdateIdPut;
+        };
       };
     };
   };
@@ -387,6 +408,20 @@ const routes = [
     path: '/teacher/question/store',
     method: ["POST"],
     types: {} as TeacherQuestionStorePost,
+  },
+  {
+    params: ["id"],
+    name: 'teacher.question.edit',
+    path: '/teacher/question/quiz/:id/edit',
+    method: ["GET","HEAD"],
+    types: {} as TeacherQuestionQuizIdEditGetHead,
+  },
+  {
+    params: ["id"],
+    name: 'teacher.question.update',
+    path: '/teacher/question/update/:id',
+    method: ["PUT"],
+    types: {} as TeacherQuestionUpdateIdPut,
   },
   {
     params: ["quizid","id"],

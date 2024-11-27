@@ -11,7 +11,6 @@ const routeUrl = computed(() => {
   }
   return client.$url(props.routePath)
 })
-console.log(getRelativePath(routeUrl.value))
 </script>
 
 <template>

@@ -6,6 +6,7 @@ const properties = {
   title: vine.string().trim().minLength(4).maxLength(256),
   responses: vine.array(
     vine.object({
+      id: vine.number().nullable(),
       title: vine.string().trim().minLength(4).maxLength(256),
       correct: vine.boolean(),
     })
@@ -13,3 +14,4 @@ const properties = {
 }
 
 export const createQuestionValidator = defineValidator(properties)
+export const editQuestionValidator = defineValidator(properties)

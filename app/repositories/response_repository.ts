@@ -12,7 +12,7 @@ export class ResponseRepository {
   }
 
   async findById(id: number) {
-    return await Response.find(id)
+    return await Response.findOrFail(id)
   }
 
   async edit(id: number, payload: ResponseDTO) {

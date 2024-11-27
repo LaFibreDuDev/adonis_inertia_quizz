@@ -13,8 +13,6 @@ const props = defineProps({
   defaultClass: String,
 })
 
-console.log(props.name)
-
 const icon = computed(() => icons[props.name])
 </script>
 

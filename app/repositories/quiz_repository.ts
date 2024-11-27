@@ -6,6 +6,7 @@ interface QuizDTO {
 }
 
 export type QuizListQueryResult = ResultOf<QuizRepository, 'findAll'>
+export type QuizFindQueryResult = ResultOf<QuizRepository, 'findById'>
 
 export class QuizRepository {
   async findAll() {

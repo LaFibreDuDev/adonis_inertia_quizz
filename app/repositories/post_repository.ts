@@ -18,7 +18,7 @@ export class PostRepository {
   }
 
   async findById(id: number) {
-    return await Post.find(id)
+    return await Post.findOrFail(id)
   }
 
   async edit(id: number, payload: PostDTO) {

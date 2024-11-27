@@ -1,20 +1,31 @@
 import Question from '#models/question'
+import { ResultOf } from '../../types/common.js'
 
 interface QuestionDTO {
   title: string
   quizId: number
 }
 
+export type QuestionFindQueryResult = ResultOf<QuestionRepository, 'findById'>
+
 export class QuestionRepository {
   async create(payload: QuestionDTO): Promise<Question> {
     return await Question.create(payload)
   }
 
-  async findById(id: number, withQuiz: boolean = false) {
+  async findById(
+    id: number,
+    withQuiz: boolean = false,
+    withResponses: boolean = false
+  ): Promise<Question> {
+    const query = Question.query().where('id', id)
     if (withQuiz) {
-      return Question.query().preload('quiz').where('id', id).firstOrFail()
+      query.preload('quiz')
     }
-    return await Question.find(id)
+    if (withResponses) {
+      query.preload('responses')
+    }
+    return await query.firstOrFail()
   }
 
   async edit(id: number, payload: QuestionDTO) {

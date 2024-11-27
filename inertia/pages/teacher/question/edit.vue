@@ -5,37 +5,37 @@ import { useForm } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
-import type { QuizFindQueryResult } from '#repositories/quiz_repository'
-const props = defineProps<{ quiz: QuizFindQueryResult }>()
-const form = useForm({
-  quizId: props.quiz.id,
-  title: null,
-  responses: [
-    {
-      title: null,
-      correct: false,
-    },
-    {
-      title: null,
-      correct: false,
-    },
-    {
-      title: null,
-      correct: false,
-    },
-    {
-      title: null,
-      correct: false,
-    },
-  ],
+import type { QuestionFindQueryResult } from '#repositories/question_repository'
+
+type FormProps = {
+  quizId: number
+  title: string
+  responses: { id: null | number; title: null | string; correct: boolean }[]
+}
+
+const props = defineProps<{ question: QuestionFindQueryResult }>()
+const quiz = computed(() => props.question.quiz)
+const form = useForm<FormProps>({
+  quizId: props.question.quizId,
+  title: props.question.title,
+  responses: props.question.responses.map(({ id, title, correct }) => {
+    return {
+      id,
+      title,
+      correct,
+    }
+  }),
 })
-const storeRouteUrl = computed(() => client.$url('teacher.question.store'))
+const updateRouteUrl = computed(() =>
+  client.$url('teacher.question.update', { params: { id: props.question.id } })
+)
 
 const deleteResponse = (index: number) => {
   form.responses = form.responses.filter((_, currIndex) => index !== currIndex)
 }
 const addResponse = () => {
   form.responses.push({
+    id: null,
     title: null,
     correct: false,
   })
@@ -44,8 +44,8 @@ const addResponse = () => {
 
 <template>
   <Layout>
-    <h1 class="text-2xl my-8">Ajouter une question au quiz {{ quiz.id }} ({{ quiz.title }})</h1>
-    <form method="post" @submit.prevent="form.post(storeRouteUrl)">
+    <h1 class="text-2xl my-8">Editer une question au quiz {{ quiz.id }} ({{ quiz.title }})</h1>
+    <form method="post" @submit.prevent="form.put(updateRouteUrl)">
       <AppInput
         label="Question"
         :errors="form.errors.title"
@@ -75,9 +75,7 @@ const addResponse = () => {
           <span>Ajouter une nouvelle réponse à la liste</span>
         </button>
       </div>
-      <button type="submit" class="btn btn-primary mt-8" :disabled="form.processing">
-        Ajouter
-      </button>
+      <button type="submit" class="btn btn-primary mt-8" :disabled="form.processing">Editer</button>
     </form>
   </Layout>
 </template>
