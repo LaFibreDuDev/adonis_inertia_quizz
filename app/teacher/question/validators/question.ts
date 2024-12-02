@@ -3,6 +3,7 @@ import { defineValidator } from '#core/validators/main'
 
 const properties = {
   quizId: vine.number(),
+  id: vine.number(),
   title: vine.string().trim().minLength(4).maxLength(256),
   responses: vine.array(
     vine.object({

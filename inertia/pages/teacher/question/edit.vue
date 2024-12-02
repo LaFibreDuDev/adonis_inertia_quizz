@@ -9,6 +9,7 @@ import type { QuestionFindQueryResult } from '#teacher/question/repositories/que
 
 type FormProps = {
   quizId: number
+  id: number
   title: string
   responses: { id: null | number; title: null | string; correct: boolean }[]
 }
@@ -17,6 +18,7 @@ const props = defineProps<{ question: QuestionFindQueryResult }>()
 const quiz = computed(() => props.question.quiz)
 const form = useForm<FormProps>({
   quizId: props.question.quizId,
+  id: props.question.id,
   title: props.question.title,
   responses: props.question.responses.map(({ id, title, correct }) => {
     return {
@@ -63,7 +65,7 @@ const addResponse = () => {
               v-model="form.responses[index].title"
               :name="`response${index}`"
             />
-            <button class="btn btn-sm btn-error" @click="deleteResponse(index)">
+            <button class="btn btn-sm btn-error" @click.prevent="deleteResponse(index)">
               <LucideIcon name="Trash2" />
             </button>
           </label>

@@ -1,13 +1,18 @@
 import Response from '#core/models/response'
 
-interface ResponseDTO {
+interface CreateResponseDTO {
   questionId: number
   title: string
   correct: boolean
 }
 
+interface UpdateResponseDTO {
+  title: string
+  correct: boolean
+}
+
 export class ResponseRepository {
-  async create(payload: ResponseDTO) {
+  async create(payload: CreateResponseDTO) {
     return await Response.create(payload)
   }
 
@@ -15,7 +20,7 @@ export class ResponseRepository {
     return await Response.findOrFail(id)
   }
 
-  async edit(id: number, payload: ResponseDTO) {
+  async edit(id: number, payload: UpdateResponseDTO) {
     const response = await this.findById(id)
     if (response) {
       return await response.merge(payload).save()
