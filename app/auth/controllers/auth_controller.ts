@@ -29,7 +29,7 @@ export default class AuthController {
     const user = await this.userRepository.verify(email, password)
     await auth.use('web').login(user)
     if (user.role === UserRole.Teacher) {
-      return response.redirect().toRoute('teacher.blog.list')
+      return response.redirect().toRoute('teacher.quiz.list')
     } else {
       return response.redirect().toRoute('student.home')
     }
