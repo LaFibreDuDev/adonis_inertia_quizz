@@ -120,6 +120,7 @@ router
 router
   .group(() => {
     router.get('/', [PageController, 'studentHome']).as('home')
+    router.get('/quiz', [PageController, 'studentQuiz']).as('quiz.example')
     router.get('/about', [PageController, 'about']).as('about')
   })
   .as('student')
