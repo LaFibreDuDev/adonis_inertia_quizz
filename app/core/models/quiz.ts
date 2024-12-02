@@ -11,7 +11,6 @@ import User from './user.js'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import { getCurrentUserId } from './utils/get_current_user.js'
 import Question from './question.js'
-import { HttpContext } from '@adonisjs/core/http'
 
 export default class Quiz extends BaseModel {
   @column({ isPrimary: true })
@@ -49,12 +48,16 @@ export default class Quiz extends BaseModel {
 
   @beforeCreate()
   public static async setCreatedBy(quiz: Quiz) {
-    quiz.createdBy = await getCurrentUserId()
-    quiz.updatedBy = quiz.createdBy
+    try {
+      quiz.createdBy = await getCurrentUserId()
+      quiz.updatedBy = quiz.createdBy
+    } catch (error) {}
   }
 
   @beforeUpdate()
   public static async setUpdatedBy(quiz: Quiz) {
-    quiz.updatedBy = await getCurrentUserId()
+    try {
+      quiz.updatedBy = await getCurrentUserId()
+    } catch (error) {}
   }
 }

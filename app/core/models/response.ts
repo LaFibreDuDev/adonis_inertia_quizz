@@ -2,7 +2,6 @@ import { DateTime } from 'luxon'
 import { BaseModel, beforeCreate, beforeUpdate, belongsTo, column } from '@adonisjs/lucid/orm'
 import User from './user.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import { HttpContext } from '@adonisjs/core/http'
 import Question from './question.js'
 import { getCurrentUserId } from './utils/get_current_user.js'
 
@@ -48,12 +47,16 @@ export default class Response extends BaseModel {
 
   @beforeCreate()
   public static async setCreatedBy(response: Response) {
-    response.createdBy = await getCurrentUserId()
-    response.updatedBy = response.createdBy
+    try {
+      response.createdBy = await getCurrentUserId()
+      response.updatedBy = response.createdBy
+    } catch (error) {}
   }
 
   @beforeUpdate()
   public static async setUpdatedBy(response: Response) {
-    response.updatedBy = await getCurrentUserId()
+    try {
+      response.updatedBy = await getCurrentUserId()
+    } catch (error) {}
   }
 }
