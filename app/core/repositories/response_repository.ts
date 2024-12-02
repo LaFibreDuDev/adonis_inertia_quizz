@@ -1,4 +1,4 @@
-import Response from '#models/response'
+import Response from '#core/models/response'
 
 interface ResponseDTO {
   questionId: number

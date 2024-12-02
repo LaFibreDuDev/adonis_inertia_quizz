@@ -1,5 +1,5 @@
 import vine from '@vinejs/vine'
-import { defineValidator } from '#validators/main'
+import { defineValidator } from './main.js'
 
 const properties = {
   quizId: vine.number(),

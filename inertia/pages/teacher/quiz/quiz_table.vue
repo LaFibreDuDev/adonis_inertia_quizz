@@ -2,9 +2,9 @@
 import TableHeader from '~/components/table/TableHeader.vue'
 import TableLine from '~/components/table/TableLine.vue'
 import AppTable from '~/components/table/AppTable.vue'
-import AppDelete from '~/components/AppDelete.vue'
+import AppDelete from '~/components/form/AppDelete.vue'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
-import type { QuizListQueryResult } from '#repositories/quiz_repository'
+import type { QuizListQueryResult } from '#teacher/quiz/repositories/quiz_repository'
 import { Link } from '@tuyau/inertia/vue'
 
 const props = defineProps<{ quizzes: QuizListQueryResult }>()

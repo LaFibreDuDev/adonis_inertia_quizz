@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Layout from '~/components/Layout.vue'
-import AppCheckbox from '~/components/AppCheckbox.vue'
+import Layout from '~/components/navbar/Layout.vue'
+import AppCheckbox from '~/components/form/AppCheckbox.vue'
 import { Link } from '@tuyau/inertia/vue'
-import AppDelete from '~/components/AppDelete.vue'
-import { QuizFindQueryResult } from '#repositories/quiz_repository'
+import AppDelete from '~/components/form/AppDelete.vue'
+import { QuizFindQueryResult } from '#teacher/quiz/repositories/quiz_repository'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
 defineProps<{ quiz: QuizFindQueryResult }>()
 </script>
@@ -26,15 +26,17 @@ defineProps<{ quiz: QuizFindQueryResult }>()
                 route="teacher.question.edit"
                 :params="{ id: question.id }"
                 class="btn btn-primary"
-                ><LucideIcon name="Pencil"
-              /></Link>
+              >
+                <LucideIcon name="Pencil" />
+              </Link>
               <AppDelete
                 :route-path="`teacher.question.destroy`"
                 :route-params="{ quizid: quiz.id, id: question.id }"
                 :message="`Êtes vous sûr de vouloir supprimer la question ${question.id} du quiz ${quiz.id} ?`"
                 btn-classes="btn btn-error"
-                ><LucideIcon name="Trash2"
-              /></AppDelete>
+              >
+                <LucideIcon name="Trash2" />
+              </AppDelete>
             </div>
           </div>
           <div class="flex flex-wrap">

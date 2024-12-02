@@ -10,11 +10,11 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
-const PostController = () => import('#controllers/post_controller')
-const QuizController = () => import('#controllers/quiz_controller')
-const QuestionController = () => import('#controllers/question_controller')
-const PageController = () => import('#controllers/page_controller')
-const AuthController = () => import('#controllers/auth_controller')
+const PostController = () => import('#core/controllers/post_controller')
+const QuizController = () => import('#teacher/quiz/controllers/quiz_controller')
+const QuestionController = () => import('#core/controllers/question_controller')
+const PageController = () => import('#core/controllers/page_controller')
+const AuthController = () => import('#core/controllers/auth_controller')
 
 router
   .group(() => {

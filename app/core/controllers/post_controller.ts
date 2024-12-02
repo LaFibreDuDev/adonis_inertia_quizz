@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core'
-import { PostRepository } from '#repositories/post_repository'
+import { PostRepository } from '#core/repositories/post_repository'
 import { HttpContext } from '@adonisjs/core/http'
-import { createPostValidator, editPostValidator } from '#validators/post'
+import { createPostValidator, editPostValidator } from '#core/validators/post'
 
 @inject()
 export default class PostController {

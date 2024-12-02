@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import BurgerIcon from './icons/BurgerIcon.vue'
 import ThemeController from './ThemeController.vue'
-import AppLink from '~/components/AppLink.vue'
-import NavBarUser from '~/components/NavBarUser.vue'
+import AppLink from '~/components/navbar/AppLink.vue'
+import NavBarUser from '~/components/navbar/NavBarUser.vue'
 import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import type { SharedProps } from '@adonisjs/inertia/types'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UserRole } from '../../app/enums/user_role.ts'
-import AppLink from '~/components/AppLink.vue'
+import { UserRole } from '#core/enums/user_role'
+import AppLink from '~/components/navbar/AppLink.vue'
 import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import type { SharedProps } from '@adonisjs/inertia/types'

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Layout from '~/components/Layout.vue'
-import AppInput from '~/components/AppInput.vue'
+import Layout from '~/components/navbar/Layout.vue'
+import AppInput from '~/components/form/AppInput.vue'
 import { useForm } from '@inertiajs/vue3'
-import AppPasswordInput from '~/components/AppPasswordInput.vue'
+import AppPasswordInput from '~/components/form/AppPasswordInput.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 const form = useForm({

@@ -7,10 +7,10 @@ import {
   column,
   hasMany,
 } from '@adonisjs/lucid/orm'
-import User from '#models/user'
+import User from './user.js'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
-import { getCurrentUserId } from '#models/utils/get_current_user'
-import Question from '#models/question'
+import { getCurrentUserId } from './utils/get_current_user.js'
+import Question from './question.js'
 import { HttpContext } from '@adonisjs/core/http'
 
 export default class Quiz extends BaseModel {

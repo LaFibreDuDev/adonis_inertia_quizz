@@ -3,103 +3,107 @@ import type { InferInput } from '@vinejs/vine/types'
 
 type AuthSigninGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['signin'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/auth_controller.ts').default['signin'], false>
 }
 type AuthStorePost = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/user.ts')['signinValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['store'], true>
+  request: MakeTuyauRequest<InferInput<typeof import('../app/core/validators/user.ts')['signinValidator']>>
+  response: MakeTuyauResponse<import('../app/core/controllers/auth_controller.ts').default['store'], true>
 }
 type AuthLoginGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['login'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/auth_controller.ts').default['login'], false>
 }
 type AuthLoginPost = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['processLogin'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/auth_controller.ts').default['processLogin'], false>
 }
 type AuthLogoutGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/auth_controller.ts').default['logout'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/auth_controller.ts').default['logout'], false>
 }
 type TeacherBlogGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['list'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/post_controller.ts').default['list'], false>
 }
 type TeacherBlogAddGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['add'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/post_controller.ts').default['add'], false>
 }
 type TeacherBlogStorePost = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/post.ts')['createPostValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['store'], true>
+  request: MakeTuyauRequest<InferInput<typeof import('../app/core/validators/post.ts')['createPostValidator']>>
+  response: MakeTuyauResponse<import('../app/core/controllers/post_controller.ts').default['store'], true>
 }
 type TeacherBlogEditIdGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['edit'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/post_controller.ts').default['edit'], false>
 }
 type TeacherBlogUpdateIdPut = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/post.ts')['editPostValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['update'], true>
+  request: MakeTuyauRequest<InferInput<typeof import('../app/core/validators/post.ts')['editPostValidator']>>
+  response: MakeTuyauResponse<import('../app/core/controllers/post_controller.ts').default['update'], true>
 }
 type TeacherBlogDestroyIdDelete = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/post_controller.ts').default['destroy'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/post_controller.ts').default['destroy'], false>
 }
 type TeacherQuizGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['list'], false>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['list'], false>
 }
 type TeacherQuizShowIdGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['show'], false>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['show'], false>
 }
 type TeacherQuizAddGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['add'], false>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['add'], false>
 }
 type TeacherQuizStorePost = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/quiz.ts')['createQuizValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['store'], true>
+  request: MakeTuyauRequest<InferInput<typeof import('../app/teacher/quiz/validators/quiz.ts')['createQuizValidator']>>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['store'], true>
 }
 type TeacherQuizEditIdGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['edit'], false>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['edit'], false>
 }
 type TeacherQuizUpdateIdPut = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/quiz.ts')['editQuizValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['update'], true>
+  request: MakeTuyauRequest<InferInput<typeof import('../app/teacher/quiz/validators/quiz.ts')['editQuizValidator']>>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['update'], true>
 }
 type TeacherQuizDestroyIdDelete = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/quiz_controller.ts').default['destroy'], false>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['destroy'], false>
 }
 type TeacherQuestionQuizIdAddGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['add'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/question_controller.ts').default['add'], false>
 }
 type TeacherQuestionStorePost = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/question.ts')['createQuestionValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['store'], true>
+  request: MakeTuyauRequest<InferInput<typeof import('../app/core/validators/question.ts')['createQuestionValidator']>>
+  response: MakeTuyauResponse<import('../app/core/controllers/question_controller.ts').default['store'], true>
 }
 type TeacherQuestionQuizIdEditGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['edit'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/question_controller.ts').default['edit'], false>
 }
 type TeacherQuestionUpdateIdPut = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/validators/question.ts')['editQuestionValidator']>>
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['update'], true>
+  request: MakeTuyauRequest<InferInput<typeof import('../app/core/validators/question.ts')['editQuestionValidator']>>
+  response: MakeTuyauResponse<import('../app/core/controllers/question_controller.ts').default['update'], true>
 }
 type TeacherQuestionQuizIdDestroyIdDelete = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/question_controller.ts').default['destroy'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/question_controller.ts').default['destroy'], false>
 }
 type StudentGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['studentHome'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/page_controller.ts').default['studentHome'], false>
+}
+type StudentQuizGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/core/controllers/page_controller.ts').default['studentQuiz'], false>
 }
 type StudentAboutGetHead = {
   request: unknown
-  response: MakeTuyauResponse<import('../app/controllers/page_controller.ts').default['about'], false>
+  response: MakeTuyauResponse<import('../app/core/controllers/page_controller.ts').default['about'], false>
 }
 export interface ApiDefinition {
   'auth': {
@@ -260,6 +264,12 @@ export interface ApiDefinition {
     };
     '$get': StudentGetHead;
     '$head': StudentGetHead;
+    'quiz': {
+      '$url': {
+      };
+      '$get': StudentQuizGetHead;
+      '$head': StudentQuizGetHead;
+    };
     'about': {
       '$url': {
       };
@@ -436,6 +446,13 @@ const routes = [
     path: '/student',
     method: ["GET","HEAD"],
     types: {} as StudentGetHead,
+  },
+  {
+    params: [],
+    name: 'student.quiz.example',
+    path: '/student/quiz',
+    method: ["GET","HEAD"],
+    types: {} as StudentQuizGetHead,
   },
   {
     params: [],

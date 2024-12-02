@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon'
 import { BaseModel, beforeCreate, beforeUpdate, belongsTo, column } from '@adonisjs/lucid/orm'
-import User from '#models/user'
+import User from './user.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import { HttpContext } from '@adonisjs/core/http'
-import Question from '#models/question'
-import { getCurrentUserId } from '#models/utils/get_current_user'
+import Question from './question.js'
+import { getCurrentUserId } from './utils/get_current_user.js'
 
 export default class Response extends BaseModel {
   @column({ isPrimary: true })

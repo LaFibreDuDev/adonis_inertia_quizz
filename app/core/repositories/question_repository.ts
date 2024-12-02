@@ -1,5 +1,5 @@
-import Question from '#models/question'
-import { ResultOf } from '../../types/common.js'
+import Question from '#core/models/question'
+import { ResultOf } from '../../../types/common.js'
 
 interface QuestionDTO {
   title: string

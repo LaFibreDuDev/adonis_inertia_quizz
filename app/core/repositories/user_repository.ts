@@ -1,4 +1,4 @@
-import User from '#models/user'
+import User from '#core/models/user'
 
 interface CreateUserDTO {
   username: string

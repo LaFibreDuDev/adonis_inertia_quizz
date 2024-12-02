@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Layout from '~/components/Layout.vue'
+import Layout from '~/components/navbar/Layout.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
-import { QuizListQueryResult } from '#repositories/quiz_repository'
+import { QuizListQueryResult } from '#teacher/quiz/repositories/quiz_repository'
 import Quiz_table from '~/pages/teacher/quiz/quiz_table.vue'
 
 const props = defineProps<{

@@ -7,6 +7,9 @@ export default class PageController {
   studentHome({ inertia }: HttpContext) {
     return inertia.render('student/pages/home')
   }
+  studentQuiz({ inertia }: HttpContext) {
+    return inertia.render('student/pages/quiz')
+  }
   about({ inertia }: HttpContext) {
     return inertia.render('student/pages/about')
   }

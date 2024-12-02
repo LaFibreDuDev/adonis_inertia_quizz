@@ -17,6 +17,9 @@
     "./api": "./.adonisjs/api.ts"
   },
   "imports": {
+    "#core/*": "./app/core/*.js",
+    "#teacher/*": "./app/teacher/*.js",
+    "#student/*": "./app/student/*.js",
     "#controllers/*": "./app/controllers/*.js",
     "#repositories/*": "./app/repositories/*.js",
     "#exceptions/*": "./app/exceptions/*.js",

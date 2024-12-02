@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Layout from '~/components/Layout.vue'
+import Layout from '~/components/navbar/Layout.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 import Blog_table from '~/pages/teacher/blog/blog_table.vue'
-import type { PostListQueryResult } from '#repositories/post_repository'
+import type { PostListQueryResult } from '#core/repositories/post_repository'
 
 const props = defineProps<{
   posts: PostListQueryResult

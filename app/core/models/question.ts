@@ -7,11 +7,11 @@ import {
   column,
   hasMany,
 } from '@adonisjs/lucid/orm'
-import User from '#models/user'
+import User from './user.js'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
-import Quiz from '#models/quiz'
-import Response from '#models/response'
-import { getCurrentUserId } from '#models/utils/get_current_user'
+import Quiz from './quiz.js'
+import Response from './response.js'
+import { getCurrentUserId } from './utils/get_current_user.js'
 
 export default class Question extends BaseModel {
   @column({ isPrimary: true })

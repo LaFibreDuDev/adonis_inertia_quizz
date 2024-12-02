@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppDelete from '~/components/AppDelete.vue'
+import AppDelete from '~/components/form/AppDelete.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 const props = defineProps<{ post: Object }>()

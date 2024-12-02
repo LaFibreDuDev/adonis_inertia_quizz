@@ -1,5 +1,5 @@
-import Post from '#models/post'
-import { ResultOf } from '../../types/common.js'
+import Post from '#core/models/post'
+import { ResultOf } from '../../../types/common.js'
 
 interface PostDTO {
   title: string

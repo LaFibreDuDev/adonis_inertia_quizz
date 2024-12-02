@@ -1,5 +1,5 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
-import Post from '#models/post'
+import Post from '../../app/core/models/post'
 import { faker } from '@faker-js/faker'
 
 export default class extends BaseSeeder {

@@ -1,5 +1,5 @@
-import Quiz from '#models/quiz'
-import { ResultOf } from '../../types/common.js'
+import Quiz from '#core/models/quiz'
+import { ResultOf } from '../../../../types/common.js'
 
 interface QuizDTO {
   title: string

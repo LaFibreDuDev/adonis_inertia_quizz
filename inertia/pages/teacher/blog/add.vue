@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Layout from '~/components/Layout.vue'
+import Layout from '~/components/navbar/Layout.vue'
 import { useForm } from '@inertiajs/vue3'
-import AppInput from '~/components/AppInput.vue'
-import AppTextarea from '~/components/AppTextarea.vue'
+import AppInput from '~/components/form/AppInput.vue'
+import AppTextarea from '~/components/form/AppTextarea.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 

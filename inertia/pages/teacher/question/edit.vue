@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Layout from '~/components/Layout.vue'
-import AppInput from '~/components/AppInput.vue'
+import Layout from '~/components/navbar/Layout.vue'
+import AppInput from '~/components/form/AppInput.vue'
 import { useForm } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
-import type { QuestionFindQueryResult } from '#repositories/question_repository'
+import type { QuestionFindQueryResult } from '#core/repositories/question_repository'
 
 type FormProps = {
   quizId: number

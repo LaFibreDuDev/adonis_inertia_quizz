@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTheme } from '~/store/theme'
+import { useTheme } from '~/store/theme.ts'
 import NavBar from '~/components/NavBar.vue'
 
 const themeStore = useTheme()
