@@ -18,6 +18,7 @@
   },
   "imports": {
     "#core/*": "./app/core/*.js",
+    "#auth/*": "./app/auth/*.js",
     "#teacher/*": "./app/teacher/*.js",
     "#student/*": "./app/student/*.js",
     "#controllers/*": "./app/controllers/*.js",

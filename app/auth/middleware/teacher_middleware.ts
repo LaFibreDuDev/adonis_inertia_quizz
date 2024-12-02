@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import type { NextFn } from '@adonisjs/core/types/http'
-import { UserRole } from '../enums/user_role.js'
+import { UserRole } from '#auth/enums/user_role'
 import { errors as authErrors } from '@adonisjs/auth'
 
 /**

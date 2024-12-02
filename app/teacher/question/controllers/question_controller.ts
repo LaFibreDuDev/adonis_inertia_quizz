@@ -1,9 +1,12 @@
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
-import { QuestionRepository } from '#core/repositories/question_repository'
+import { QuestionRepository } from '#teacher/question/repositories/question_repository'
 import { QuizRepository } from '#teacher/quiz/repositories/quiz_repository'
-import { createQuestionValidator, editQuestionValidator } from '#core/validators/question'
-import { ResponseRepository } from '#core/repositories/response_repository'
+import {
+  createQuestionValidator,
+  editQuestionValidator,
+} from '#teacher/question/validators/question'
+import { ResponseRepository } from '#teacher/question/repositories/response_repository'
 
 @inject()
 export default class QuestionController {

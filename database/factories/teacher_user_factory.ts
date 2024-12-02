@@ -1,6 +1,6 @@
 import factory from '@adonisjs/lucid/factories'
 import User from '#core/models/user'
-import { UserRole } from '#core/enums/user_role'
+import { UserRole } from '#auth/enums/user_role'
 
 export const TeacherUserFactory = factory
   .define(User, async () => {

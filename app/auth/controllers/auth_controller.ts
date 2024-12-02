@@ -1,10 +1,10 @@
 // import type { HttpContext } from '@adonisjs/core/http'
 
 import { HttpContext } from '@adonisjs/core/http'
-import { UserRepository } from '#core/repositories/user_repository'
-import { signinValidator } from '#core/validators/user'
+import { UserRepository } from '#auth/repositories/user_repository'
+import { signinValidator } from '#auth/validators/user'
 import { inject } from '@adonisjs/core'
-import { UserRole } from '../enums/user_role.js'
+import { UserRole } from '#auth/enums/user_role'
 
 @inject()
 export default class AuthController {

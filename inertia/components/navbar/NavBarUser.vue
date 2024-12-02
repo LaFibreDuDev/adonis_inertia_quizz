@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { UserRole } from '#core/enums/user_role'
+import { UserRole } from '#auth/enums/user_role'
 import AppLink from '~/components/navbar/AppLink.vue'
 import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
@@ -11,7 +11,6 @@ const menuItems = {
     { label: 'A propos', routePath: `student.about` },
   ],
   teacher: [
-    { label: 'Liste des articles', routePath: `teacher.blog.list` },
     { label: 'Liste des quiz', routePath: `teacher.quiz.list` },
     /*{ label: 'Modifier article 1', routePath: `teacher.blog.edit`, routeParams: { id: 1 } },*/
   ],

@@ -1,7 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import type { NextFn } from '@adonisjs/core/types/http'
 import type { Authenticators } from '@adonisjs/auth/types'
-import { UserRole } from '../enums/user_role.js'
+import { UserRole } from '#auth/enums/user_role'
 
 /**
  * Guest middleware is used to deny access to routes that should
@@ -24,7 +24,7 @@ export default class GuestMiddleware {
   ) {
     for (let guard of options.guards || [ctx.auth.defaultGuard]) {
       if (await ctx.auth.use(guard).check()) {
-        if (ctx.auth.user.role === UserRole.Teacher) {
+        if (ctx.auth.user?.role === UserRole.Teacher) {
           return ctx.response.redirect(this.teacherRedirectTo, true)
         }
       } else {

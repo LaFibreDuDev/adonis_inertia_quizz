@@ -10,11 +10,12 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
-const PostController = () => import('#core/controllers/post_controller')
+const CorePageController = () => import('#core/controllers/page_controller')
+const AuthController = () => import('#auth/controllers/auth_controller')
+
+const StudentPageController = () => import('#student/page/controllers/page_controller')
 const QuizController = () => import('#teacher/quiz/controllers/quiz_controller')
-const QuestionController = () => import('#core/controllers/question_controller')
-const PageController = () => import('#core/controllers/page_controller')
-const AuthController = () => import('#core/controllers/auth_controller')
+const QuestionController = () => import('#teacher/question/controllers/question_controller')
 
 router
   .group(() => {
@@ -29,33 +30,6 @@ router
 
 router
   .group(() => {
-    router
-      .group(() => {
-        router.get('/', [PostController, 'list']).as('list')
-        router.get('/add', [PostController, 'add']).as('add')
-        router.post('/store', [PostController, 'store']).as('store')
-        router
-          .get('/edit/:id', [PostController, 'edit'])
-          .as('edit')
-          .where('id', {
-            match: /^[0-9]+$/,
-          })
-        router
-          .put('/update/:id', [PostController, 'update'])
-          .as('update')
-          .where('id', {
-            match: /^[0-9]+$/,
-          })
-        router
-          .delete('/destroy/:id', [PostController, 'destroy'])
-          .as('destroy')
-          .where('id', {
-            match: /^[0-9]+$/,
-          })
-      })
-      .as('blog')
-      .prefix('blog')
-
     router
       .group(() => {
         router.get('/', [QuizController, 'list']).as('list')
@@ -119,12 +93,12 @@ router
 
 router
   .group(() => {
-    router.get('/', [PageController, 'studentHome']).as('home')
-    router.get('/quiz', [PageController, 'studentQuiz']).as('quiz.example')
-    router.get('/about', [PageController, 'about']).as('about')
+    router.get('/', [StudentPageController, 'home']).as('home')
+    router.get('/quiz', [StudentPageController, 'exampleQuiz']).as('quiz.example')
+    router.get('/about', [StudentPageController, 'about']).as('about')
   })
   .as('student')
   .prefix('student')
   .use(middleware.auth())
 
-router.get('/', [PageController, 'home']).as('home')
+router.get('/', [CorePageController, 'home']).as('home')

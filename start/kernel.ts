@@ -46,8 +46,8 @@ router.use([
  * the routes or the routes group.
  */
 export const middleware = router.named({
-  silent: () => import('#core/middleware/silent_auth_middleware'),
-  guest: () => import('#core/middleware/guest_middleware'),
-  auth: () => import('#core/middleware/auth_middleware'),
-  teacher: () => import('#core/middleware/teacher_middleware'),
+  silent: () => import('#auth/middleware/silent_auth_middleware'),
+  guest: () => import('#auth/middleware/guest_middleware'),
+  auth: () => import('#auth/middleware/auth_middleware'),
+  teacher: () => import('#auth/middleware/teacher_middleware'),
 })

@@ -5,7 +5,7 @@ import { useForm } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
-import type { QuestionFindQueryResult } from '#core/repositories/question_repository'
+import type { QuestionFindQueryResult } from '#teacher/question/repositories/question_repository'
 
 type FormProps = {
   quizId: number
@@ -22,7 +22,7 @@ const form = useForm<FormProps>({
     return {
       id,
       title,
-      correct,
+      correct: !!correct,
     }
   }),
 })

@@ -1,5 +1,5 @@
 import vine from '@vinejs/vine'
-import { defineValidator } from './main.js'
+import { defineValidator } from '#core/validators/main'
 
 const properties = {
   username: vine.string().trim().minLength(4).maxLength(256),
