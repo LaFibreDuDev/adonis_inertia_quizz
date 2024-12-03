@@ -14,13 +14,11 @@ defineProps<{ quiz: QuizFindQueryResult }>()
     <Link route="teacher.question.add" :params="{ id: quiz.id }" class="btn btn-primary mt-8"
       >Ajouter une question</Link
     >
-    <div class="flex flex-col gap-4" v-for="question in quiz.questions">
+    <div class="flex flex-col gap-4" v-for="(question, index) in quiz.questions">
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
           <div class="flex justify-between">
-            <h2 class="card-title mb-4">
-              {{ question.title }}
-            </h2>
+            <h2 class="card-title mb-4">#{{ index + 1 }} - {{ question.title }}</h2>
             <div class="flex gap-4">
               <Link
                 route="teacher.question.edit"

@@ -20,7 +20,7 @@ export default class QuizController {
   ) {}
 
   async list({ inertia }: HttpContext) {
-    const quizzes = await this.quizRepository.findAll()
+    const quizzes = await this.quizRepository.findAll(true)
     return inertia.render('teacher/quiz/list', { quizzes: quizzes })
   }
 

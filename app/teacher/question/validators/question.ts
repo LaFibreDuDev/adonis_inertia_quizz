@@ -8,7 +8,7 @@ const properties = {
   responses: vine.array(
     vine.object({
       id: vine.number().optional(),
-      title: vine.string().trim().minLength(4).maxLength(256),
+      title: vine.string().trim().minLength(1).maxLength(256),
       correct: vine.boolean(),
     })
   ),

@@ -9,8 +9,12 @@ export type QuizListQueryResult = ResultOf<QuizRepository, 'findAll'>
 export type QuizFindQueryResult = ResultOf<QuizRepository, 'findById'>
 
 export class QuizRepository {
-  async findAll() {
-    return Quiz.query().preload('creator')
+  async findAll(withQuestions: boolean = false) {
+    let query = Quiz.query().preload('creator')
+    if (withQuestions) {
+      query = query.preload('questions')
+    }
+    return query
   }
 
   async create(payload: QuizDTO) {

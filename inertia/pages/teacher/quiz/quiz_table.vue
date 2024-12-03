@@ -12,11 +12,12 @@ const props = defineProps<{ quizzes: QuizListQueryResult }>()
 
 <template>
   <AppTable>
-    <TableHeader :fields="['Id', 'Titre', 'Créateur', 'Actions']" />
+    <TableHeader :fields="['Id', 'Titre', 'Nombre de questions', 'Créateur', 'Actions']" />
     <tbody v-for="quiz in quizzes">
       <TableLine :id="quiz.id">
         <td>{{ quiz.id }}</td>
         <td>{{ quiz.title }}</td>
+        <td>{{ quiz.questions.length }}</td>
         <td>{{ quiz.creator.username }}</td>
         <th class="flex gap-4">
           <Link route="teacher.quiz.show" :params="{ id: quiz.id }"><LucideIcon name="Eye" /></Link>
@@ -25,6 +26,7 @@ const props = defineProps<{ quizzes: QuizListQueryResult }>()
           /></Link>
           <AppDelete
             :route-path="`teacher.quiz.destroy`"
+            :route-params="{ id: quiz.id }"
             :id="quiz.id"
             :message="`Êtes vous sûr de vouloir supprimer le quiz ${quiz.id} ?`"
             ><LucideIcon name="Trash"
