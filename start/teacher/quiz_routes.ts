@@ -12,6 +12,8 @@ export default function quizRoutes() {
         .where('id', {
           match: /^[0-9]+$/,
         })
+      router.get('/add/prompt', [QuizController, 'addFromPrompt']).as('add_from_prompt')
+      router.post('/store/prompt', [QuizController, 'storeFromPrompt']).as('store_from_prompt')
       router.get('/add', [QuizController, 'add']).as('add')
       router.post('/store', [QuizController, 'store']).as('store')
       router

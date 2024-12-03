@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const props = defineProps<{ label: String; errors?: String }>()
+withDefaults(
+  defineProps<{ label: String; errors?: String; placeholder?: string; height?: number }>(),
+  {
+    placeholder: '',
+    height: 48,
+  }
+)
 const model = defineModel()
 </script>
 
@@ -9,9 +15,10 @@ const model = defineModel()
     <textarea
       id="content"
       name="content"
-      class="input input-bordered h-48"
+      :class="`!h-${height} input input-bordered`"
       required
       v-model="model"
+      :placeholder="placeholder"
     />
     <div v-if="errors">{{ errors }}</div>
   </div>

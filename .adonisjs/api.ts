@@ -41,6 +41,14 @@ type TeacherQuizShowIdGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['show'], false>
 }
+type TeacherQuizAddPromptGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['addFromPrompt'], false>
+}
+type TeacherQuizStorePromptPost = {
+  request: MakeTuyauRequest<InferInput<typeof import('../app/teacher/quiz/validators/quiz.ts')['createQuizFromPromptValidator']>>
+  response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['storeFromPrompt'], true>
+}
 type TeacherQuizAddGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['add'], false>
@@ -141,12 +149,23 @@ export interface ApiDefinition {
         };
       };
       'add': {
+        'prompt': {
+          '$url': {
+          };
+          '$get': TeacherQuizAddPromptGetHead;
+          '$head': TeacherQuizAddPromptGetHead;
+        };
         '$url': {
         };
         '$get': TeacherQuizAddGetHead;
         '$head': TeacherQuizAddGetHead;
       };
       'store': {
+        'prompt': {
+          '$url': {
+          };
+          '$post': TeacherQuizStorePromptPost;
+        };
         '$url': {
         };
         '$post': TeacherQuizStorePost;
@@ -285,6 +304,20 @@ const routes = [
     path: '/teacher/quiz/show/:id',
     method: ["GET","HEAD"],
     types: {} as TeacherQuizShowIdGetHead,
+  },
+  {
+    params: [],
+    name: 'teacher.quiz.add_from_prompt',
+    path: '/teacher/quiz/add/prompt',
+    method: ["GET","HEAD"],
+    types: {} as TeacherQuizAddPromptGetHead,
+  },
+  {
+    params: [],
+    name: 'teacher.quiz.store_from_prompt',
+    path: '/teacher/quiz/store/prompt',
+    method: ["POST"],
+    types: {} as TeacherQuizStorePromptPost,
   },
   {
     params: [],
