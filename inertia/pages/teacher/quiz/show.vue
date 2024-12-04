@@ -3,13 +3,23 @@ import Layout from '~/components/navbar/Layout.vue'
 import AppCheckbox from '~/components/form/AppCheckbox.vue'
 import { Link } from '@tuyau/inertia/vue'
 import AppDelete from '~/components/form/AppDelete.vue'
-import { QuizFindQueryResult } from '#teacher/quiz/repositories/quiz_repository'
+import type { QuizFindQueryResult } from '#teacher/quiz/repositories/quiz_repository'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
+import Prism from 'prismjs'
+import 'prism-themes/themes/prism-a11y-dark.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import { onMounted } from 'vue'
 defineProps<{ quiz: QuizFindQueryResult }>()
+
+onMounted(() => {
+  Prism.highlightAll()
+})
 </script>
 <template>
   <Layout>
     <h1 class="text-2xl my-8">Visualisation du quiz</h1>
+
     <h2 class="text-xl">{{ quiz.title }}</h2>
     <Link route="teacher.question.add" :params="{ id: quiz.id }" class="btn btn-primary mt-8"
       >Ajouter une question</Link
@@ -18,7 +28,13 @@ defineProps<{ quiz: QuizFindQueryResult }>()
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
           <div class="flex justify-between">
-            <h2 class="card-title mb-4">#{{ index + 1 }} - {{ question.title }}</h2>
+            <div>
+              <h2 class="card-title mb-4">#{{ index + 1 }} - {{ question.title }}</h2>
+              <pre class="line-numbers"><code class="language-javascript">
+let maVar = 10
+maVar = maVar + 1
+              </code></pre>
+            </div>
             <div class="flex gap-4">
               <Link
                 route="teacher.question.edit"

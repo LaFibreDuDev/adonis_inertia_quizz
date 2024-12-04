@@ -4,14 +4,14 @@ import { router } from '@inertiajs/vue3'
 import { client } from '~/helpers/rpc_client.ts'
 
 type Props = {
-  routePath: String
-  routeParams: Object
-  message?: String
-  btnClasses?: Object
+  routePath: string
+  routeParams: object
+  message?: string
+  btnClasses?: string
 }
 const props = withDefaults(defineProps<Props>(), {
   message: 'Êtes-vous sûr de vouloir supprimer ?',
-  btnClasses: {},
+  btnClasses: '',
 })
 const open = ref(false)
 

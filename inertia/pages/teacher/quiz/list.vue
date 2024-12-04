@@ -2,7 +2,7 @@
 import Layout from '~/components/navbar/Layout.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
-import { QuizListQueryResult } from '#teacher/quiz/repositories/quiz_repository'
+import type { QuizListQueryResult } from '#teacher/quiz/repositories/quiz_repository'
 import Quiz_table from '~/pages/teacher/quiz/quiz_table.vue'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
 
