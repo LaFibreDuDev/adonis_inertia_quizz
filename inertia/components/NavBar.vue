@@ -6,6 +6,7 @@ import NavBarUser from '~/components/navbar/NavBarUser.vue'
 import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import type { SharedProps } from '@adonisjs/inertia/types'
+
 const currentUser = computed(() => usePage<SharedProps>().props.currentUser)
 </script>
 <template>

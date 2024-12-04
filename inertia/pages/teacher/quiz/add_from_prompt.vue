@@ -5,6 +5,7 @@ import AppInput from '~/components/form/AppInput.vue'
 import AppTextarea from '~/components/form/AppTextarea.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
+
 const form = useForm({
   title: 'Quiz sur le SQL',
   content:

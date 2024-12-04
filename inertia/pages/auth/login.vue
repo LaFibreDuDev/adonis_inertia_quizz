@@ -5,6 +5,7 @@ import { useForm } from '@inertiajs/vue3'
 import AppPasswordInput from '~/components/form/AppPasswordInput.vue'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
+
 const form = useForm({
   email: null,
   password: null,

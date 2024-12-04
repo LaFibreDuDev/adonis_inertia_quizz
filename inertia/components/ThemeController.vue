@@ -2,6 +2,7 @@
 import SunIcon from './icons/SunIcon.vue'
 import MoonIcon from './icons/MoonIcon.vue'
 import { useTheme } from '~/store/theme'
+
 const themeStore = useTheme()
 </script>
 

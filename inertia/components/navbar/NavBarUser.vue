@@ -4,6 +4,7 @@ import AppLink from '~/components/navbar/AppLink.vue'
 import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import type { SharedProps } from '@adonisjs/inertia/types'
+
 const currentUser = computed(() => usePage<SharedProps>().props.currentUser)
 const menuItems = {
   student: [

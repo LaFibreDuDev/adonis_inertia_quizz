@@ -6,6 +6,7 @@ import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
 import LucideIcon from '~/components/icons/LucideIcon.vue'
 import type { QuizFindQueryResult } from '#teacher/quiz/repositories/quiz_repository'
+
 const props = defineProps<{ quiz: QuizFindQueryResult }>()
 const form = useForm({
   quizId: props.quiz.id,

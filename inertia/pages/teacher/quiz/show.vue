@@ -10,6 +10,7 @@ import 'prism-themes/themes/prism-a11y-dark.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import { onMounted } from 'vue'
+
 defineProps<{ quiz: QuizFindQueryResult }>()
 
 onMounted(() => {

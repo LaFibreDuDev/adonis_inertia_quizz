@@ -3,6 +3,7 @@ import { client } from '~/helpers/rpc_client.ts'
 import { Link } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { getRelativePath } from '~/helpers/functions.ts'
+
 const props = defineProps<{ label: string; routePath: string; routeParams?: object }>()
 const routeUrl = computed(() => {
   if (props.routeParams) {

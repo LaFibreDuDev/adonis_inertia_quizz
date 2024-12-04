@@ -4,6 +4,7 @@ import Layout from '~/components/navbar/Layout.vue'
 import { useForm } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { client } from '~/helpers/rpc_client.ts'
+
 const props = defineProps<{ quiz: Object }>()
 const form = useForm({
   title: props.quiz.title,
