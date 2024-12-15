@@ -13,6 +13,7 @@ const menuItems = {
   ],
   teacher: [
     { label: 'Liste des quiz', routePath: `teacher.quiz.list` },
+    { label: 'Liste des parties', routePath: `teacher.game.list` },
     /*{ label: 'Modifier article 1', routePath: `teacher.blog.edit`, routeParams: { id: 1 } },*/
   ],
 }

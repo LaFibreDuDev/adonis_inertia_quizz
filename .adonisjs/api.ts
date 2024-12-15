@@ -33,6 +33,14 @@ type StudentAboutGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/student/page/controllers/page_controller.ts').default['about'], false>
 }
+type TeacherGameGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/teacher/game/controllers/game_controller.ts').default['list'], false>
+}
+type TeacherGameStorePost = {
+  request: MakeTuyauRequest<InferInput<typeof import('../app/teacher/game/validators/game.ts')['createGameValidator']>>
+  response: MakeTuyauResponse<import('../app/teacher/game/controllers/game_controller.ts').default['store'], true>
+}
 type TeacherQuizGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/teacher/quiz/controllers/quiz_controller.ts').default['list'], false>
@@ -135,6 +143,17 @@ export interface ApiDefinition {
     };
   };
   'teacher': {
+    'game': {
+      '$url': {
+      };
+      '$get': TeacherGameGetHead;
+      '$head': TeacherGameGetHead;
+      'store': {
+        '$url': {
+        };
+        '$post': TeacherGameStorePost;
+      };
+    };
     'quiz': {
       '$url': {
       };
@@ -290,6 +309,20 @@ const routes = [
     path: '/student/about',
     method: ["GET","HEAD"],
     types: {} as StudentAboutGetHead,
+  },
+  {
+    params: [],
+    name: 'teacher.game.list',
+    path: '/teacher/game',
+    method: ["GET","HEAD"],
+    types: {} as TeacherGameGetHead,
+  },
+  {
+    params: [],
+    name: 'teacher.game.store',
+    path: '/teacher/game/store',
+    method: ["POST"],
+    types: {} as TeacherGameStorePost,
   },
   {
     params: [],
