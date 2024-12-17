@@ -33,6 +33,14 @@ type StudentAboutGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/student/page/controllers/page_controller.ts').default['about'], false>
 }
+type StudentGamePendingIdGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/student/game/controllers/game_user_controller.ts').default['pending'], false>
+}
+type StudentGameJoinPost = {
+  request: MakeTuyauRequest<InferInput<typeof import('../app/student/game/validators/game_user.ts')['createGameUserValidator']>>
+  response: MakeTuyauResponse<import('../app/student/game/controllers/game_user_controller.ts').default['join'], true>
+}
 type TeacherGameGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/teacher/game/controllers/game_controller.ts').default['list'], false>
@@ -44,10 +52,6 @@ type TeacherGameStorePost = {
 type TeacherGamePendingIdGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/teacher/game/controllers/game_controller.ts').default['pending'], false>
-}
-type TeacherGameJoinPost = {
-  request: MakeTuyauRequest<InferInput<typeof import('../app/teacher/game/validators/game_user.ts')['createGameUserValidator']>>
-  response: MakeTuyauResponse<import('../app/teacher/game/controllers/game_user_controller.ts').default['join'], true>
 }
 type TeacherQuizGetHead = {
   request: unknown
@@ -149,6 +153,21 @@ export interface ApiDefinition {
       '$get': StudentAboutGetHead;
       '$head': StudentAboutGetHead;
     };
+    'game': {
+      'pending': {
+        ':id': {
+          '$url': {
+          };
+          '$get': StudentGamePendingIdGetHead;
+          '$head': StudentGamePendingIdGetHead;
+        };
+      };
+      'join': {
+        '$url': {
+        };
+        '$post': StudentGameJoinPost;
+      };
+    };
   };
   'teacher': {
     'game': {
@@ -168,11 +187,6 @@ export interface ApiDefinition {
           '$get': TeacherGamePendingIdGetHead;
           '$head': TeacherGamePendingIdGetHead;
         };
-      };
-      'join': {
-        '$url': {
-        };
-        '$post': TeacherGameJoinPost;
       };
     };
     'quiz': {
@@ -332,6 +346,20 @@ const routes = [
     types: {} as StudentAboutGetHead,
   },
   {
+    params: ["id"],
+    name: 'student.game.pending',
+    path: '/student/game/pending/:id',
+    method: ["GET","HEAD"],
+    types: {} as StudentGamePendingIdGetHead,
+  },
+  {
+    params: [],
+    name: 'student.game.join',
+    path: '/student/game/join',
+    method: ["POST"],
+    types: {} as StudentGameJoinPost,
+  },
+  {
     params: [],
     name: 'teacher.game.list',
     path: '/teacher/game',
@@ -351,13 +379,6 @@ const routes = [
     path: '/teacher/game/pending/:id',
     method: ["GET","HEAD"],
     types: {} as TeacherGamePendingIdGetHead,
-  },
-  {
-    params: [],
-    name: 'teacher.game.join',
-    path: '/teacher/game/join',
-    method: ["POST"],
-    types: {} as TeacherGameJoinPost,
   },
   {
     params: [],

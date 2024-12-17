@@ -14,7 +14,7 @@ export default class GameController {
 
   async store({ request, response }: HttpContext) {
     const payload = await request.validateUsing(createGameValidator)
-    const game = await this.gameRepository.create(payload)
+    await this.gameRepository.create(payload)
     return response.redirect().toRoute('teacher.game.list')
   }
 

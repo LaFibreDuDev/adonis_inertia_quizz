@@ -1,7 +1,6 @@
 import router from '@adonisjs/core/services/router'
 
 const GameController = () => import('#teacher/game/controllers/game_controller')
-const GameUserController = () => import('#teacher/game/controllers/game_user_controller')
 
 export default function gameRoutes() {
   router
@@ -14,7 +13,6 @@ export default function gameRoutes() {
         .where('id', {
           match: /^[0-9]+$/,
         })
-      router.post('/join', [GameUserController, 'join']).as('join')
     })
     .as('game')
     .prefix('game')
