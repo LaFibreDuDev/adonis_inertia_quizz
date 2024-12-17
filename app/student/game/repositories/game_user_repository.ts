@@ -1,16 +1,21 @@
 import GameUser from '#core/models/game_user'
+import { ResultOf } from '../../../../types/common.js'
 
 interface GameUserDTO {
   gameId: number
   userId: number
 }
 
+export type GameCreateQueryResult = ResultOf<GameUserRepository, 'create'>
+
 export class GameUserRepository {
   async create(payload: GameUserDTO) {
     const gameUser = await this.findByGameIdAndUserId(payload.gameId, payload.userId)
     if (!gameUser) {
       console.log('No game user found')
-      return await GameUser.create(payload)
+      const newGameUser = await GameUser.create(payload)
+      await newGameUser.load('user')
+      return newGameUser
     }
   }
 

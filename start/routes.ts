@@ -11,6 +11,9 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 import studentRoutes from '#start/student/routes'
 import teacherRoutes from '#start/teacher/routes'
+import transmit from '@adonisjs/transmit/services/main'
+
+transmit.registerRoutes()
 
 const CorePageController = () => import('#core/controllers/page_controller')
 const AuthController = () => import('#auth/controllers/auth_controller')
