@@ -14,7 +14,6 @@ const gameStoreUrl = computed(() => client.$url('teacher.game.store'))
 
 <template>
   <form method="post" @submit.prevent="form.post(gameStoreUrl)">
-    <input type="hidden" name="quizId" :value="quizId" />
     <button type="submit" class="btn btn-sm btn-primary">Créer une partie</button>
   </form>
 </template>

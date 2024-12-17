@@ -12,6 +12,7 @@ import Quiz from '#core/models/quiz'
 import User from '#core/models/user'
 import { getCurrentUserId } from '#core/models/utils/get_current_user'
 import GameUser from '#core/models/game_user'
+import type { IGameStatus } from '#teacher/game/enums/game_status'
 
 export default class Game extends BaseModel {
   @column({ isPrimary: true })
@@ -19,6 +20,9 @@ export default class Game extends BaseModel {
 
   @column()
   declare quizId: number
+
+  @column()
+  declare status: IGameStatus
 
   @belongsTo(() => Quiz, {
     foreignKey: 'quizId',

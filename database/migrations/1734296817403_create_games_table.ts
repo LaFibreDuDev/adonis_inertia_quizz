@@ -1,4 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
+import { GameStatus } from '#teacher/game/enums/game_status'
 
 export default class extends BaseSchema {
   protected tableName = 'games'
@@ -7,6 +8,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('quiz_id').unsigned().notNullable()
+      table.integer('status').unsigned().notNullable().defaultTo(GameStatus.Pending)
       table.integer('created_by').unsigned().notNullable()
       table.integer('updated_by').unsigned().nullable()
 

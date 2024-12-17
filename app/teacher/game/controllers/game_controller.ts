@@ -17,4 +17,9 @@ export default class GameController {
     const game = await this.gameRepository.create(payload)
     return response.redirect().toRoute('teacher.game.list')
   }
+
+  async pending({ inertia, params }: HttpContext) {
+    const game = await this.gameRepository.findById(params.id)
+    return inertia.render('teacher/game/pending', { game })
+  }
 }
