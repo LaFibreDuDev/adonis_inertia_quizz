@@ -11,6 +11,22 @@ const form = useForm({
   password: null,
 })
 const loginRouteUrl = computed(() => client.$url('auth.login.process'))
+
+const githubRedirect = async () => {
+  const response = await client.github.redirect.$get({})
+  const githubRedirectUrl = response.data.url
+  if (githubRedirectUrl) {
+    window.location.href = githubRedirectUrl
+  }
+}
+
+const googleRedirect = async () => {
+  const response = await client.google.redirect.$get({})
+  const googleRedirectUrl = response.data.url
+  if (googleRedirectUrl) {
+    window.location.href = googleRedirectUrl
+  }
+}
 </script>
 
 <template>
@@ -31,5 +47,13 @@ const loginRouteUrl = computed(() => client.$url('auth.login.process'))
         Se connecter
       </button>
     </form>
+    <div class="flex gap-4">
+      <button class="btn btn-primary my-4" @click.prevent="githubRedirect">
+        Se connecter avec Github
+      </button>
+      <button class="btn btn-primary my-4" @click.prevent="googleRedirect">
+        Se connecter avec Google
+      </button>
+    </div>
   </Layout>
 </template>

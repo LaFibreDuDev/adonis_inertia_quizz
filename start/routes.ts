@@ -17,6 +17,12 @@ transmit.registerRoutes()
 
 const CorePageController = () => import('#core/controllers/page_controller')
 const AuthController = () => import('#auth/controllers/auth_controller')
+const SocialController = () => import('#auth/controllers/social_controller')
+
+router.get('/github/redirect', [SocialController, 'githubRedirect']).as('github.redirect')
+router.get('/github/callback', [SocialController, 'githubCallback']).as('github.callback')
+router.get('/google/redirect', [SocialController, 'googleRedirect']).as('google.redirect')
+router.get('/google/callback', [SocialController, 'googleCallback']).as('google.callback')
 
 router
   .group(() => {

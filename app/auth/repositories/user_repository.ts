@@ -13,6 +13,10 @@ export class UserRepository {
     return await User.create(payload)
   }
 
+  async findByEmail(email: string): Promise<User | null> {
+    return User.findBy('email', email)
+  }
+
   async verify(email: string, password: string) {
     return await User.verifyCredentials(email, password)
   }

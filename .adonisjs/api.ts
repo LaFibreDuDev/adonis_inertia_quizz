@@ -1,6 +1,22 @@
 import type { MakeTuyauRequest, MakeTuyauResponse } from '@tuyau/utils/types'
 import type { InferInput } from '@vinejs/vine/types'
 
+type GithubRedirectGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/auth/controllers/social_controller.ts').default['githubRedirect'], false>
+}
+type GithubCallbackGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/auth/controllers/social_controller.ts').default['githubCallback'], false>
+}
+type GoogleRedirectGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/auth/controllers/social_controller.ts').default['googleRedirect'], false>
+}
+type GoogleCallbackGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/auth/controllers/social_controller.ts').default['googleCallback'], false>
+}
 type AuthSigninGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/auth/controllers/auth_controller.ts').default['signin'], false>
@@ -110,6 +126,34 @@ type TeacherQuestionQuizIdDestroyIdDelete = {
   response: MakeTuyauResponse<import('../app/teacher/question/controllers/question_controller.ts').default['destroy'], false>
 }
 export interface ApiDefinition {
+  'github': {
+    'redirect': {
+      '$url': {
+      };
+      '$get': GithubRedirectGetHead;
+      '$head': GithubRedirectGetHead;
+    };
+    'callback': {
+      '$url': {
+      };
+      '$get': GithubCallbackGetHead;
+      '$head': GithubCallbackGetHead;
+    };
+  };
+  'google': {
+    'redirect': {
+      '$url': {
+      };
+      '$get': GoogleRedirectGetHead;
+      '$head': GoogleRedirectGetHead;
+    };
+    'callback': {
+      '$url': {
+      };
+      '$get': GoogleCallbackGetHead;
+      '$head': GoogleCallbackGetHead;
+    };
+  };
   'auth': {
     'signin': {
       '$url': {
@@ -289,6 +333,34 @@ export interface ApiDefinition {
   };
 }
 const routes = [
+  {
+    params: [],
+    name: 'github.redirect',
+    path: '/github/redirect',
+    method: ["GET","HEAD"],
+    types: {} as GithubRedirectGetHead,
+  },
+  {
+    params: [],
+    name: 'github.callback',
+    path: '/github/callback',
+    method: ["GET","HEAD"],
+    types: {} as GithubCallbackGetHead,
+  },
+  {
+    params: [],
+    name: 'google.redirect',
+    path: '/google/redirect',
+    method: ["GET","HEAD"],
+    types: {} as GoogleRedirectGetHead,
+  },
+  {
+    params: [],
+    name: 'google.callback',
+    path: '/google/callback',
+    method: ["GET","HEAD"],
+    types: {} as GoogleCallbackGetHead,
+  },
   {
     params: [],
     name: 'auth.signin',
